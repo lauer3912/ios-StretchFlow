@@ -5,7 +5,7 @@ struct StatisticsView: View {
     @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
                     // Overview Cards

@@ -56,7 +56,7 @@ struct SessionPlayerView: View {
         }
     }
 
-    private var topbar: some View {
+    private var topBar: some View {
         HStack {
             Button {
                 timer?.invalidate()

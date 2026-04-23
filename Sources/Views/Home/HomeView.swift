@@ -7,7 +7,7 @@ struct HomeView: View {
     @State private var selectedSession: StretchSession?
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
                     // Header with streak
