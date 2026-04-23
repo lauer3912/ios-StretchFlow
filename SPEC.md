@@ -1,10 +1,9 @@
-# StretchFlow - Product Specification
+# StretchGoGo - Product Specification
 
 ## 1. Project Overview
 
-**App Name:** StretchFlow
-**Bundle ID:** `com.ggsheng.StretchFlow`
-**App ID (App Store Connect):** `com.ggsheng.StretchFlow`
+**App Name:** StretchGoGo
+**Bundle ID:** `com.ggsheng.StretchGoGo`
 **Team:** ZhiFeng Sun (9L6N2ZF26B)
 
 **Core Functionality:** A daily stretching & yoga companion app that guides users through guided stretching sessions with timer-based animations, body part targeting, habit tracking, and progress statistics. Available in dark and light themes.

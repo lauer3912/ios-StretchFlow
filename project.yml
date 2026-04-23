@@ -1,4 +1,4 @@
-name: StretchFlow
+name: StretchGoGo
 options:
   bundleIdPrefix: com.ggsheng
   deploymentTarget:
@@ -16,7 +16,7 @@ settings:
     ENABLE_PREVIEWS: YES
 
 targets:
-  StretchFlow:
+  StretchGoGo:
     type: application
     platform: iOS
     sources:
@@ -26,8 +26,9 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: Sources/App/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchFlow
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchGoGo
+        PRODUCT_NAME: StretchGoGo
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: NO
-        CODE_SIGN_ENTITLEMENTS: Sources/App/StretchFlow.entitlements
+        CODE_SIGN_ENTITLEMENTS: Sources/App/StretchGoGo.entitlements
         TARGETED_DEVICE_FAMILY: "1,2"
