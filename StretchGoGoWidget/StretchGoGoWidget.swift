@@ -65,7 +65,11 @@ struct StretchGoGoWidgetEntryView: View {
             }
         }
         .padding()
-        .containerBackground(.fill.tertiary, for: .widget)
+        if #available(iOS 17.0, *) {
+            self.containerBackground(.fill.tertiary, for: .widget)
+        } else {
+            self.background(Color(UIColor.systemBackground))
+        }
     }
 }
 
