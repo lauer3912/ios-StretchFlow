@@ -8,12 +8,13 @@ options:
 
 settings:
   base:
+    SWIFT_VERSION: "5.9"
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
-    DEVELOPMENT_TEAM: "9L6N2ZF26B"
     CODE_SIGN_STYLE: Automatic
-    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: 9L6N2ZF26B
     ENABLE_PREVIEWS: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
 
 targets:
   StretchGoGo:
@@ -21,6 +22,8 @@ targets:
     platform: iOS
     sources:
       - path: Sources
+        excludes:
+          - "**/.DS_Store"
     resources:
       - path: Sources/Resources/Assets.xcassets
     settings:
@@ -29,6 +32,104 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchGoGo
         PRODUCT_NAME: StretchGoGo
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         GENERATE_INFOPLIST_FILE: NO
+        SWIFT_EMIT_LOC_STRINGS: YES
         CODE_SIGN_ENTITLEMENTS: Sources/App/StretchGoGo.entitlements
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 9L6N2ZF26B
         TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGNING_ALLOWED: YES
+      configs:
+        Debug:
+          CODE_SIGNING_ALLOWED: NO
+        Release:
+          CODE_SIGNING_ALLOWED: YES
+    entitlements:
+      path: Sources/App/StretchGoGo.entitlements
+
+  StretchGoGoWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: StretchGoGoWidget
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        INFOPLIST_FILE: StretchGoGoWidget/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchGoGo.widget
+        PRODUCT_NAME: StretchGoGoWidget
+        GENERATE_INFOPLIST_FILE: NO
+        SWIFT_EMIT_LOC_STRINGS: YES
+        CODE_SIGN_ENTITLEMENTS: StretchGoGoWidget/StretchGoGoWidget.entitlements
+        CODE_SIGNING_ALLOWED: NO
+        DEVELOPMENT_TEAM: 9L6N2ZF26B
+        SKIP_INSTALL: YES
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/Frameworks"
+          - "@executable_path/../../Frameworks"
+      configs:
+        Debug:
+          CODE_SIGNING_ALLOWED: NO
+        Release:
+          CODE_SIGNING_ALLOWED: YES
+    entitlements:
+      path: StretchGoGoWidget/StretchGoGoWidget.entitlements
+
+  StretchGoGoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: StretchGoGoTests
+        excludes:
+          - "**/.DS_Store"
+    dependencies:
+      - target: StretchGoGo
+    settings:
+      base:
+        INFOPLIST_FILE: StretchGoGoTests/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchGoGoTests
+        PRODUCT_NAME: StretchGoGoTests
+        GENERATE_INFOPLIST_FILE: NO
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 9L6N2ZF26B
+
+  StretchGoGoUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: StretchGoGoUITests
+        excludes:
+          - "**/.DS_Store"
+    dependencies:
+      - target: StretchGoGo
+    settings:
+      base:
+        INFOPLIST_FILE: StretchGoGoUITests/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.StretchGoGoUITests
+        PRODUCT_NAME: StretchGoGoUITests
+        GENERATE_INFOPLIST_FILE: NO
+        TEST_TARGET: "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo"
+        CODE_SIGN_ENTITLEMENTS: ""
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 9L6N2ZF26B
+
+schemes:
+  StretchGoGo:
+    build:
+      targets:
+        StretchGoGo: all
+        StretchGoGoWidget: all
+        StretchGoGoUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - StretchGoGoUITests
+    archive:
+      config: Release
