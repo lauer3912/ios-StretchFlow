@@ -173,6 +173,7 @@ struct SessionPlayerView: View {
             }
             .disabled(currentExerciseIndex == 0 && !isRestPeriod)
             .opacity(currentExerciseIndex == 0 && !isRestPeriod ? 0.3 : 1)
+            .accessibilityLabel("Previous exercise")
 
             // Play/Pause
             Button {
@@ -187,6 +188,8 @@ struct SessionPlayerView: View {
                             .fill(themeManager.isDarkMode ? AppColors.darkPrimary : AppColors.lightPrimary)
                     )
             }
+            .accessibilityLabel(isPaused ? "Resume session" : "Pause session")
+            .accessibilityHint("Double tap to \(isPaused ? "resume" : "pause") the current stretch")
 
             // Next
             Button {
@@ -196,6 +199,7 @@ struct SessionPlayerView: View {
                     .font(.title)
                     .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
             }
+            .accessibilityLabel("Next exercise")
         }
         .padding(.bottom, 40)
     }

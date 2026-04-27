@@ -36,6 +36,8 @@ struct HomeView: View {
                         Image(systemName: themeManager.isDarkMode ? "sun.max.fill" : "moon.fill")
                             .foregroundColor(AppColors.lightPrimary)
                     }
+                    .accessibilityLabel(themeManager.isDarkMode ? "Switch to light mode" : "Switch to dark mode")
+                    .accessibilityHint("Double tap to toggle dark mode")
                 }
             }
             .fullScreenCover(item: $selectedSession) { session in
@@ -98,6 +100,7 @@ struct HomeView: View {
                     RecommendedSessionCard(session: session)
                 }
                 .buttonStyle(PlainButtonStyle())
+                .accessibilityLabel("Recommended: \(session.title)")
             }
         }
     }
@@ -120,6 +123,7 @@ struct HomeView: View {
                         SessionRowCard(session: session)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibilityLabel("Recent session: \(session.title)")
                 }
             }
         }
@@ -177,6 +181,8 @@ struct QuickStartCard: View {
             )
         }
         .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
+        .accessibilityLabel("\(duration) minute stretch session")
+        .accessibilityHint("Double tap to start a \(duration) minute stretch")
     }
 }
 
