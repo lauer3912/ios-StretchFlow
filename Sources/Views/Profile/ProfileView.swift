@@ -39,7 +39,7 @@ struct ProfileView: View {
             }
 
             VStack(spacing: 4) {
-                Text("StretchFlow User")
+                Text("StretchGoGo User")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)

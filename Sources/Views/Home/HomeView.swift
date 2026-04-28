@@ -26,7 +26,7 @@ struct HomeView: View {
                 .padding(.top, 16)
             }
             .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
-            .navigationTitle("StretchFlow")
+            .navigationTitle("StretchGoGo")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

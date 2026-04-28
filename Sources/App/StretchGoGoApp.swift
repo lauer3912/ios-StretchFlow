@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct StretchFlowApp: App {
+struct StretchGoGoApp: App {
     @StateObject private var themeManager = ThemeManager()
     @StateObject private var dataManager = DataManager()
 
