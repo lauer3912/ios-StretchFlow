@@ -284,7 +284,7 @@ struct ProfileView: View {
 
                 SettingsLinkRow(title: "Restore Purchases", icon: "arrow.clockwise") {
                     Task {
-                        await restorePurchases()
+                        await premiumManager.restorePurchases()
                     }
                 }
 
