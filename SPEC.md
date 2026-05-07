@@ -9,7 +9,7 @@
 **Core Functionality:** A daily stretching & yoga companion app that guides users through guided stretching sessions with timer-based animations, body part targeting, habit tracking, and progress statistics. Available in dark and light themes.
 
 **Target Market:** Western markets (US, EU, UK, CA, AU) - Health & Fitness enthusiasts, office workers, athletes
-**Monetization:** One-time purchase @ $9.9 (Premium Unlock)
+**Monetization:** Freemium (Free tier + $0.99/month Premium subscription)
 **iOS Version Support:** iOS 15.0+
 
 ---
@@ -26,6 +26,7 @@
 6. **ProfileScreen** - User settings, preferences, reminders
 7. **SettingsScreen** - App settings, iCloud sync, data export
 8. **AchievementsScreen** - Unlock badges and milestones
+9. **PremiumPaywallView** - Subscription upgrade screen
 
 ### Navigation Structure
 - **UITabBarController** with 4 tabs:
@@ -84,10 +85,26 @@
 - **ActionButton** - Primary CTA button with gradient
 - **SegmentedPicker** - Duration/intensity selector
 - **BottomSheet** - Modal for session options
+- **PremiumPaywallView** - Subscription upgrade screen
 
 ---
 
 ## 3. Functionality Specification
+
+### Freemium Model
+
+| Feature | Free | Premium ($0.99/mo) |
+|---------|------|-------------------|
+| Basic Sessions | 10 sessions | All 72+ sessions |
+| Timer | ✅ | ✅ |
+| Dark/Light Theme | ✅ | ✅ |
+| Favorites | ✅ | ✅ |
+| Basic Stats | ✅ | ✅ |
+| Advanced Statistics | ❌ | ✅ |
+| Achievements | ❌ | ✅ |
+| Voice Guidance | ❌ | ✅ |
+| Daily Reminders | ❌ | ✅ |
+| iCloud Sync | ❌ | ✅ |
 
 ### Core Features (50+)
 
@@ -101,7 +118,7 @@
 7. Total elapsed time display
 8. Rest period timer between exercises
 9. Audio cue for exercise transitions
-10. Voice guidance narration
+10. Voice guidance narration (Premium)
 11. Session completion celebration
 12. Quick session restart
 13. Session difficulty levels (Beginner/Intermediate/Advanced)
@@ -129,15 +146,15 @@
 
 #### Tracking & Statistics (8)
 31. Daily stretch completion logging
-32. Calendar heatmap visualization
+32. Calendar heatmap visualization (Premium)
 33. Current streak counter
 34. Longest streak record
-35. Weekly summary chart
-36. Monthly summary chart
+35. Weekly summary chart (Premium)
+36. Monthly summary chart (Premium)
 37. Total minutes stretched
 38. Total sessions completed
 
-#### Achievements & Gamification (5)
+#### Achievements & Gamification (5) - Premium
 39. First session completed
 40. 7-day streak badge
 41. 30-day streak badge
@@ -145,23 +162,23 @@
 43. Weekend warrior badge
 
 #### Personalization (6)
-44. Reminder notifications
-45. Reminder time customization
+44. Reminder notifications (Premium)
+45. Reminder time customization (Premium)
 46. Preferred session duration
 47. Sound effects on/off
-48. Voice guidance on/off
-49. Haptic feedback on/off
+48. Voice guidance on/off (Premium)
+49. Haptic feedback on/off (Premium)
 50. Auto-play next session
 
 #### Data & Sync (4)
-51. iCloud data sync
+51. iCloud data sync (Premium)
 52. Local data persistence
 53. Session history export (JSON)
 54. Reset all data
 
 #### Settings (3)
 55. Dark/Light theme toggle
-56. Notification settings
+56. Notification settings (Premium)
 57. Privacy Policy display
 
 ---
@@ -176,17 +193,23 @@
 ### Dependencies (Swift Package Manager)
 - None required for core functionality (using native SwiftUI)
 
+### In-App Purchase
+- **Product ID:** `com.ggsheng.StretchGoGo.PremiumMonthly`
+- **Type:** Monthly Subscription ($0.99/month)
+- **Implementation:** StoreKit 2.0
+
 ### Data Models
 - `StretchSession` - Session definition
 - `Exercise` - Individual exercise within session
 - `UserProgress` - Per-user tracking data
 - `Achievement` - Achievement definition
 - `UserSettings` - App preferences
+- `PremiumManager` - StoreKit subscription management
 
 ### Storage
-- **UserDefaults** - User settings, preferences
+- **UserDefaults** - User settings, preferences, premium status
 - **SQLite (via SQLite.swift)** - Session data, progress records
-- **iCloud Key-Value Store** - Cross-device sync
+- **iCloud Key-Value Store** - Cross-device sync (Premium)
 
 ### Assets Required
 - App Icon (1024x1024 + all required sizes)
@@ -203,12 +226,24 @@
 - **No HealthKit required**
 - **No user accounts required**
 - **All data stored locally**
+- **Subscription data handled by Apple App Store**
 
 ---
 
 ## 6. App Store Metadata
 
-**Keywords:** stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexibility, daily workout
+**Keywords:** stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexibility, daily workout, premium, subscription
 **Category:** Health & Fitness
-**Price:** $9.99 (USD)
+**Price:** Free (In-App Purchase: $0.99/month Premium)
 **Content Rating:** 4+
+
+---
+
+## 7. Subscription Terms
+
+- **Billing:** Monthly ($0.99 USD/month)
+- **Free Trial:** None (immediate access)
+- **Renewal:** Automatic monthly renewal
+- **Cancellation:** Can be cancelled anytime via iOS Settings > Apple ID > Subscriptions
+- **Payment:** Charged to Apple ID account
+- **Terms:** https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

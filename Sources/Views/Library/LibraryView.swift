@@ -3,9 +3,11 @@ import SwiftUI
 struct LibraryView: View {
     @EnvironmentObject var dataManager: DataManager
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var premiumManager: PremiumManager
     @State private var selectedBodyPart: StretchSession.BodyPart?
     @State private var searchText = ""
     @State private var selectedDifficulty: StretchSession.Difficulty?
+    @State private var showPaywall = false
 
     var filteredSessions: [StretchSession] {
         var sessions = dataManager.sessions
@@ -48,6 +50,20 @@ struct LibraryView: View {
             .navigationTitle("Library")
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, prompt: "Search sessions")
+            .sheet(isPresented: $showPaywall) {
+                PremiumPaywallView(
+                    onPurchase: {
+                        Task {
+                            await purchasePremium()
+                        }
+                    },
+                    onRestore: {
+                        Task {
+                            await restorePurchases()
+                        }
+                    }
+                )
+            }
         }
     }
 
@@ -101,12 +117,88 @@ struct LibraryView: View {
             GridItem(.flexible(), spacing: 12)
         ], spacing: 12) {
             ForEach(filteredSessions) { session in
-                NavigationLink(destination: SessionDetailView(session: session)) {
-                    SessionGridCard(session: session)
+                if dataManager.isSessionLocked(session) {
+                    LockedSessionCard(session: session) {
+                        showPaywall = true
+                    }
+                } else {
+                    NavigationLink(destination: SessionDetailView(session: session)) {
+                        SessionGridCard(session: session)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
-                .buttonStyle(PlainButtonStyle())
             }
         }
+    }
+    
+    private func purchasePremium() async {
+        let success = await premiumManager.purchasePremium()
+        if success {
+            showPaywall = false
+        }
+    }
+    
+    private func restorePurchases() async {
+        let success = await premiumManager.restorePurchases()
+        if success {
+            showPaywall = false
+        }
+    }
+}
+
+struct LockedSessionCard: View {
+    let session: StretchSession
+    let onTap: () -> Void
+    @EnvironmentObject var themeManager: ThemeManager
+
+    var body: some View {
+        Button(action: onTap) {
+            VStack(alignment: .leading, spacing: 8) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(AppColors.primaryGradient)
+                        .frame(height: 100)
+
+                    Image(systemName: session.bodyPart.icon)
+                        .font(.largeTitle)
+                        .foregroundColor(.white.opacity(0.8))
+                    
+                    // Lock overlay
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Image(systemName: "lock.fill")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .padding(8)
+                                .background(Circle().fill(Color.black.opacity(0.5)))
+                        }
+                    }
+                    .padding(8)
+                }
+
+                Text(session.title)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
+                    .lineLimit(2)
+
+                HStack(spacing: 4) {
+                    Image(systemName: "clock")
+                        .font(.caption2)
+                    Text("\(session.durationMinutes) min")
+                        .font(.caption)
+                }
+                .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+            }
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(themeManager.isDarkMode ? AppColors.darkSurface : AppColors.lightSurface)
+            )
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

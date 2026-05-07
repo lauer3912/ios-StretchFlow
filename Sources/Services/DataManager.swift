@@ -8,6 +8,9 @@ class DataManager: ObservableObject {
 
     private let progressKey = "userProgress"
     private let settingsKey = "userSettings"
+    
+    // Free user session limit
+    private let freeSessionCount = 10
 
     init() {
         if let data = UserDefaults.standard.data(forKey: progressKey),
@@ -122,6 +125,21 @@ class DataManager: ObservableObject {
 
     func sessions(for duration: Int) -> [StretchSession] {
         sessions.filter { $0.durationMinutes == duration }
+    }
+    
+    // Returns sessions available to free users (first N sessions)
+    var freeSessions: [StretchSession] {
+        Array(sessions.prefix(freeSessionCount))
+    }
+    
+    // Returns all sessions available to premium users
+    var premiumSessions: [StretchSession] {
+        sessions
+    }
+    
+    // Check if session requires premium
+    func isSessionLocked(_ session: StretchSession) -> Bool {
+        PremiumManager.shared.isSessionLocked(session)
     }
 
     var favoriteSessions: [StretchSession] {
