@@ -193,5 +193,3 @@ struct PremiumFeatureRow: View {
         }
     }
 }
-
-}
