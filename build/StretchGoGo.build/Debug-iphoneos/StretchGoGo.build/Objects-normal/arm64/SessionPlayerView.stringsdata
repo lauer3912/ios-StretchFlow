@@ -1,0 +1,104 @@
+{
+  "source": "/Volumes/Macintosh_HD/Users/user291981/Desktop/ios-StretchFlow/Sources/Views/Session/SessionPlayerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%lld/%lld",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "REST",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previous exercise",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 176
+        }
+      },
+      {
+        "comment": "",
+        "key": "Resume session",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pause session",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 191
+        }
+      },
+      {
+        "comment": "",
+        "key": "Double tap to %@ the current stretch",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 192
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next exercise",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "Great Job!",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 217
+        }
+      },
+      {
+        "comment": "",
+        "key": "You completed %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 222
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld minutes",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 227
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld exercises",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 232
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 246
+        }
+      }
+    ]
+  },
+  "version": 1
+}

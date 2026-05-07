@@ -1,0 +1,160 @@
+{
+  "source": "/Volumes/Macintosh_HD/Users/user291981/Desktop/ios-StretchFlow/Sources/Views/Home/HomeView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "StretchGoGo",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Switch to light mode",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Switch to dark mode",
+        "location": {
+          "startingColumn": 92,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Double tap to toggle dark mode",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "Welcome Back!",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Let's stretch today",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quick Start",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Recommended For You",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 94
+        }
+      },
+      {
+        "comment": "",
+        "key": "Recommended: %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Recent Sessions",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "No recent sessions. Start stretching!",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "Recent session: %@",
+        "location": {
+          "startingColumn": 41,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld minute stretch session",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Double tap to start a %lld minute stretch",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "min",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 169
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld min • %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 210
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld min",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 260
+        }
+      }
+    ]
+  },
+  "version": 1
+}

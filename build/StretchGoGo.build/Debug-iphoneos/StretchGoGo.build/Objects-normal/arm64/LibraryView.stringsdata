@@ -1,0 +1,48 @@
+{
+  "source": "/Volumes/Macintosh_HD/Users/user291981/Desktop/ios-StretchFlow/Sources/Views/Library/LibraryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Library",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Search sessions",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Body Part",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "Difficulty",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld min",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 170
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,796 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0658DCD8CEF951F2E640BFBD /* StretchGoGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CDA6BDA3781B03AA33F46 /* StretchGoGoTests.swift */; };
+		082B75A9589180B74AB1C8CB /* UserProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27D996A443F157BEBB01E8 /* UserProgress.swift */; };
+		2D27239274D789EC1683444B /* StretchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A219F8F88B8195209C40A9 /* StretchSession.swift */; };
+		2DD0D8591D7370D33993AFC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FA7EB562053DC1EE23F255 /* ContentView.swift */; };
+		599242A76BB01B7BDC8381DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D070255AB664302A07133798 /* Assets.xcassets */; };
+		648E18797FAC041261B1C620 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9CE665EBEA480C34A95FC /* ProfileView.swift */; };
+		65A084EA537941D1EE43995A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563E95617E13A76F9118D0A /* HomeView.swift */; };
+		86371C5E46B5B8EA680FE80E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAAF56AE8EECFD6331542A /* ThemeManager.swift */; };
+		9626324AB827153032915C0D /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7ACCEA643479CC3A7FF722 /* LibraryView.swift */; };
+		9953187E2BA30559124FD005 /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854B8A09C5FAEA023B907623 /* SessionData.swift */; };
+		99F2044BDFF8C394063CDDF8 /* SessionPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C7BCDE555B03A441B2891 /* SessionPlayerView.swift */; };
+		A5546705ADA899834E19726D /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0BA2558A9BD587C263964 /* StatisticsView.swift */; };
+		A62582F0413FE22FCD7D6FAD /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5170A440E9AF8C5D236058 /* SessionDetailView.swift */; };
+		BED6E913AE06AF1A99558997 /* StretchGoGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B00C0949CE1E4FD60C4C9E /* StretchGoGoApp.swift */; };
+		C7FD2E1C8F5A18F7F88C1CC6 /* StretchGoGoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4AE398C213637E98C672A /* StretchGoGoWidget.swift */; };
+		E4635FFA313078918B6900A7 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E07B502BCF9CE1A097BFCF2 /* ScreenshotTests.swift */; };
+		FB025E7D3AC695EF8B882697 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922514A6B4FC0E946A159EAD /* DataManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D38ADEC42260E97CD16C7599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AD03014D0D2769BB032F71E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E10E8249341A7C69CEE1290F;
+			remoteInfo = StretchGoGo;
+		};
+		FD0060417373A9E5554876EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AD03014D0D2769BB032F71E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E10E8249341A7C69CEE1290F;
+			remoteInfo = StretchGoGo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22DA7F015FB5949AF5B5C304 /* StretchGoGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StretchGoGoWidget.entitlements; sourceTree = "<group>"; };
+		2B27D996A443F157BEBB01E8 /* UserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgress.swift; sourceTree = "<group>"; };
+		366AE9413910540EEC19F87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3F5CDA6BDA3781B03AA33F46 /* StretchGoGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchGoGoTests.swift; sourceTree = "<group>"; };
+		4415A7FB50DDC3563C065018 /* StretchGoGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StretchGoGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		472B97A5619B9E73DCC71066 /* StretchGoGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = StretchGoGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C245257358F8833AB658DCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6B588FD55E57EE1A4A20E051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		72A4AE398C213637E98C672A /* StretchGoGoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchGoGoWidget.swift; sourceTree = "<group>"; };
+		73A4ADA87B589ED5EC01A18C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7A765B1F804213D09FCD5975 /* StretchGoGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StretchGoGo.entitlements; sourceTree = "<group>"; };
+		8222D22D78970A43B9AC3B1D /* StretchGoGoWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = StretchGoGoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		854B8A09C5FAEA023B907623 /* SessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
+		86A0BA2558A9BD587C263964 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		8E07B502BCF9CE1A097BFCF2 /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
+		922514A6B4FC0E946A159EAD /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A593FA10FDCFC611A2F59324 /* StretchGoGoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = StretchGoGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6B9CE665EBEA480C34A95FC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AB5170A440E9AF8C5D236058 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		B7A219F8F88B8195209C40A9 /* StretchSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchSession.swift; sourceTree = "<group>"; };
+		CADAAF56AE8EECFD6331542A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		D070255AB664302A07133798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D55C7BCDE555B03A441B2891 /* SessionPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPlayerView.swift; sourceTree = "<group>"; };
+		E0FA7EB562053DC1EE23F255 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E1B00C0949CE1E4FD60C4C9E /* StretchGoGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchGoGoApp.swift; sourceTree = "<group>"; };
+		E563E95617E13A76F9118D0A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EC7ACCEA643479CC3A7FF722 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06F99B28A348873943F67710 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E0FA7EB562053DC1EE23F255 /* ContentView.swift */,
+				E563E95617E13A76F9118D0A /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1FFAB3BF58232CDB672466D6 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				86A0BA2558A9BD587C263964 /* StatisticsView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		25FEA2ABC439CA6ED8ABB7DA /* StretchGoGoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C245257358F8833AB658DCC /* Info.plist */,
+				3F5CDA6BDA3781B03AA33F46 /* StretchGoGoTests.swift */,
+			);
+			path = StretchGoGoTests;
+			sourceTree = "<group>";
+		};
+		3349FA13C2843A337670B2E0 /* StretchGoGoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				366AE9413910540EEC19F87A /* Info.plist */,
+				22DA7F015FB5949AF5B5C304 /* StretchGoGoWidget.entitlements */,
+				72A4AE398C213637E98C672A /* StretchGoGoWidget.swift */,
+			);
+			path = StretchGoGoWidget;
+			sourceTree = "<group>";
+		};
+		3DA32F7476D8936D852A6E9D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A6B9CE665EBEA480C34A95FC /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		42BCB5CB095F26CDCCC17D36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B7A219F8F88B8195209C40A9 /* StretchSession.swift */,
+				2B27D996A443F157BEBB01E8 /* UserProgress.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		900642037571A62F38FF37AD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				73A4ADA87B589ED5EC01A18C /* Info.plist */,
+				7A765B1F804213D09FCD5975 /* StretchGoGo.entitlements */,
+				E1B00C0949CE1E4FD60C4C9E /* StretchGoGoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9B3EED3D43621D3625F5E39B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				900642037571A62F38FF37AD /* App */,
+				42BCB5CB095F26CDCCC17D36 /* Models */,
+				DC50B670145AEBDF415FC307 /* Resources */,
+				E71592694F9520223BF524CB /* Services */,
+				AB0F0DA16BD0FF041DCB5017 /* Theme */,
+				A9F32971FFE883065F16A4DD /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A9F32971FFE883065F16A4DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06F99B28A348873943F67710 /* Home */,
+				E0B9C880FFCDD195FA2010C3 /* Library */,
+				3DA32F7476D8936D852A6E9D /* Profile */,
+				F1977D60BE4971E3E4D972A5 /* Session */,
+				1FFAB3BF58232CDB672466D6 /* Stats */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB0F0DA16BD0FF041DCB5017 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				CADAAF56AE8EECFD6331542A /* ThemeManager.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B9996D43E6CE2C216A09E538 /* StretchGoGoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6B588FD55E57EE1A4A20E051 /* Info.plist */,
+				8E07B502BCF9CE1A097BFCF2 /* ScreenshotTests.swift */,
+			);
+			path = StretchGoGoUITests;
+			sourceTree = "<group>";
+		};
+		C02AB980B79E6446022E1C81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4415A7FB50DDC3563C065018 /* StretchGoGo.app */,
+				A593FA10FDCFC611A2F59324 /* StretchGoGoTests.xctest */,
+				472B97A5619B9E73DCC71066 /* StretchGoGoUITests.xctest */,
+				8222D22D78970A43B9AC3B1D /* StretchGoGoWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC50B670145AEBDF415FC307 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D070255AB664302A07133798 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E0B9C880FFCDD195FA2010C3 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				EC7ACCEA643479CC3A7FF722 /* LibraryView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E71592694F9520223BF524CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				922514A6B4FC0E946A159EAD /* DataManager.swift */,
+				854B8A09C5FAEA023B907623 /* SessionData.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ED0285254B84D9BD102D97D9 = {
+			isa = PBXGroup;
+			children = (
+				9B3EED3D43621D3625F5E39B /* Sources */,
+				25FEA2ABC439CA6ED8ABB7DA /* StretchGoGoTests */,
+				B9996D43E6CE2C216A09E538 /* StretchGoGoUITests */,
+				3349FA13C2843A337670B2E0 /* StretchGoGoWidget */,
+				C02AB980B79E6446022E1C81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1977D60BE4971E3E4D972A5 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				AB5170A440E9AF8C5D236058 /* SessionDetailView.swift */,
+				D55C7BCDE555B03A441B2891 /* SessionPlayerView.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		70984FA87BFB729BCFDB5B28 /* StretchGoGoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C600DFC4A3843E165AD18FAC /* Build configuration list for PBXNativeTarget "StretchGoGoUITests" */;
+			buildPhases = (
+				20FAF4205C3D513837B46F47 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				132C5B218EBFCFDFD4040500 /* PBXTargetDependency */,
+			);
+			name = StretchGoGoUITests;
+			packageProductDependencies = (
+			);
+			productName = StretchGoGoUITests;
+			productReference = 472B97A5619B9E73DCC71066 /* StretchGoGoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B0C9AB65E9C3CDC86FEDB771 /* StretchGoGoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E7615FC11EE407304D1917F /* Build configuration list for PBXNativeTarget "StretchGoGoTests" */;
+			buildPhases = (
+				C11AE7C27671AE2745099504 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4075C13FD7E6E9CB95213CC6 /* PBXTargetDependency */,
+			);
+			name = StretchGoGoTests;
+			packageProductDependencies = (
+			);
+			productName = StretchGoGoTests;
+			productReference = A593FA10FDCFC611A2F59324 /* StretchGoGoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E10E8249341A7C69CEE1290F /* StretchGoGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6984658562DFBD83664158C4 /* Build configuration list for PBXNativeTarget "StretchGoGo" */;
+			buildPhases = (
+				0F7286BFC226C29FC717195C /* Sources */,
+				CB3498CF5423CBF8EF9DEE45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StretchGoGo;
+			packageProductDependencies = (
+			);
+			productName = StretchGoGo;
+			productReference = 4415A7FB50DDC3563C065018 /* StretchGoGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA9F6AF6E379FE85F66455AC /* StretchGoGoWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8CCAE3F7DF3CF6EF15452C /* Build configuration list for PBXNativeTarget "StretchGoGoWidget" */;
+			buildPhases = (
+				5CE8FEDAC16B6C62D508B3E4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StretchGoGoWidget;
+			packageProductDependencies = (
+			);
+			productName = StretchGoGoWidget;
+			productReference = 8222D22D78970A43B9AC3B1D /* StretchGoGoWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0AD03014D0D2769BB032F71E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					70984FA87BFB729BCFDB5B28 = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E10E8249341A7C69CEE1290F;
+					};
+					B0C9AB65E9C3CDC86FEDB771 = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+					};
+					E10E8249341A7C69CEE1290F = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+					};
+					EA9F6AF6E379FE85F66455AC = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DEAD5F0A46E41F4B2A359BE9 /* Build configuration list for PBXProject "StretchGoGo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = ED0285254B84D9BD102D97D9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C02AB980B79E6446022E1C81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E10E8249341A7C69CEE1290F /* StretchGoGo */,
+				B0C9AB65E9C3CDC86FEDB771 /* StretchGoGoTests */,
+				70984FA87BFB729BCFDB5B28 /* StretchGoGoUITests */,
+				EA9F6AF6E379FE85F66455AC /* StretchGoGoWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB3498CF5423CBF8EF9DEE45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				599242A76BB01B7BDC8381DC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F7286BFC226C29FC717195C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DD0D8591D7370D33993AFC8 /* ContentView.swift in Sources */,
+				FB025E7D3AC695EF8B882697 /* DataManager.swift in Sources */,
+				65A084EA537941D1EE43995A /* HomeView.swift in Sources */,
+				9626324AB827153032915C0D /* LibraryView.swift in Sources */,
+				648E18797FAC041261B1C620 /* ProfileView.swift in Sources */,
+				9953187E2BA30559124FD005 /* SessionData.swift in Sources */,
+				A62582F0413FE22FCD7D6FAD /* SessionDetailView.swift in Sources */,
+				99F2044BDFF8C394063CDDF8 /* SessionPlayerView.swift in Sources */,
+				A5546705ADA899834E19726D /* StatisticsView.swift in Sources */,
+				BED6E913AE06AF1A99558997 /* StretchGoGoApp.swift in Sources */,
+				2D27239274D789EC1683444B /* StretchSession.swift in Sources */,
+				86371C5E46B5B8EA680FE80E /* ThemeManager.swift in Sources */,
+				082B75A9589180B74AB1C8CB /* UserProgress.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FAF4205C3D513837B46F47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4635FFA313078918B6900A7 /* ScreenshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CE8FEDAC16B6C62D508B3E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FD2E1C8F5A18F7F88C1CC6 /* StretchGoGoWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C11AE7C27671AE2745099504 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0658DCD8CEF951F2E640BFBD /* StretchGoGoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		132C5B218EBFCFDFD4040500 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E10E8249341A7C69CEE1290F /* StretchGoGo */;
+			targetProxy = D38ADEC42260E97CD16C7599 /* PBXContainerItemProxy */;
+		};
+		4075C13FD7E6E9CB95213CC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E10E8249341A7C69CEE1290F /* StretchGoGo */;
+			targetProxy = FD0060417373A9E5554876EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		012638118E7C30D742B0CB07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGN_ENTITLEMENTS = Sources/App/StretchGoGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGo;
+				PRODUCT_NAME = StretchGoGo;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		11396FF22E857961051E23D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGN_ENTITLEMENTS = StretchGoGoWidget/StretchGoGoWidget.entitlements;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGo.widget;
+				PRODUCT_NAME = StretchGoGoWidget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4FE7D15E664FD903EF38D4F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		6B8ACCF22529B989BDAFA131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		95F8E5624ACBE9AF55F27326 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGoUITests;
+				PRODUCT_NAME = StretchGoGoUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET = "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo";
+				TEST_TARGET_NAME = StretchGoGo;
+			};
+			name = Release;
+		};
+		9F5BE742D40EB79772A816CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_ENTITLEMENTS = StretchGoGoWidget/StretchGoGoWidget.entitlements;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGo.widget;
+				PRODUCT_NAME = StretchGoGoWidget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A78D94AADFE04F631BD6BF38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGoTests;
+				PRODUCT_NAME = StretchGoGoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo";
+			};
+			name = Debug;
+		};
+		D56D08FB176EF98335DAB7D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGoTests;
+				PRODUCT_NAME = StretchGoGoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo";
+			};
+			name = Release;
+		};
+		DAB9B47EFD679D38C7EE3A1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = StretchGoGoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGoUITests;
+				PRODUCT_NAME = StretchGoGoUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET = "$(BUILT_PRODUCTS_DIR)/StretchGoGo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StretchGoGo";
+				TEST_TARGET_NAME = StretchGoGo;
+			};
+			name = Debug;
+		};
+		E0387A124D431B95C0D297A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_ENTITLEMENTS = Sources/App/StretchGoGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.StretchGoGo;
+				PRODUCT_NAME = StretchGoGo;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B8CCAE3F7DF3CF6EF15452C /* Build configuration list for PBXNativeTarget "StretchGoGoWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F5BE742D40EB79772A816CA /* Debug */,
+				11396FF22E857961051E23D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2E7615FC11EE407304D1917F /* Build configuration list for PBXNativeTarget "StretchGoGoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A78D94AADFE04F631BD6BF38 /* Debug */,
+				D56D08FB176EF98335DAB7D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6984658562DFBD83664158C4 /* Build configuration list for PBXNativeTarget "StretchGoGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0387A124D431B95C0D297A6 /* Debug */,
+				012638118E7C30D742B0CB07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C600DFC4A3843E165AD18FAC /* Build configuration list for PBXNativeTarget "StretchGoGoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAB9B47EFD679D38C7EE3A1E /* Debug */,
+				95F8E5624ACBE9AF55F27326 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DEAD5F0A46E41F4B2A359BE9 /* Build configuration list for PBXProject "StretchGoGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B8ACCF22529B989BDAFA131 /* Debug */,
+				4FE7D15E664FD903EF38D4F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0AD03014D0D2769BB032F71E /* Project object */;
+}
