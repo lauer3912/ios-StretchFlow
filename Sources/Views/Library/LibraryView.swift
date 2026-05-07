@@ -51,18 +51,7 @@ struct LibraryView: View {
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, prompt: "Search sessions")
             .sheet(isPresented: $showPaywall) {
-                PremiumPaywallView(
-                    onPurchase: {
-                        Task {
-                            await purchasePremium()
-                        }
-                    },
-                    onRestore: {
-                        Task {
-                            await restorePurchases()
-                        }
-                    }
-                )
+                PremiumPaywallView()
             }
         }
     }
@@ -117,7 +106,7 @@ struct LibraryView: View {
             GridItem(.flexible(), spacing: 12)
         ], spacing: 12) {
             ForEach(filteredSessions) { session in
-                if dataManager.isSessionLocked(session) {
+                if premiumManager.isSessionLocked(session) {
                     LockedSessionCard(session: session) {
                         showPaywall = true
                     }
@@ -128,20 +117,6 @@ struct LibraryView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-        }
-    }
-    
-    private func purchasePremium() async {
-        let success = await premiumManager.purchasePremium()
-        if success {
-            showPaywall = false
-        }
-    }
-    
-    private func restorePurchases() async {
-        let success = await premiumManager.restorePurchases()
-        if success {
-            showPaywall = false
         }
     }
 }

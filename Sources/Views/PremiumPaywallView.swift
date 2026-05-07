@@ -5,9 +5,6 @@ struct PremiumPaywallView: View {
     @EnvironmentObject var themeManager: ThemeManager
     @Environment(\.dismiss) var dismiss
     
-    let onPurchase: () -> Void
-    let onRestore: () -> Void
-    
     @State private var isPurchasing = false
     
     var body: some View {
@@ -97,10 +94,12 @@ struct PremiumPaywallView: View {
                     VStack(spacing: 16) {
                         Button {
                             isPurchasing = true
-                            onPurchase()
+                            Task {
+                                await handlePurchase()
+                            }
                         } label: {
                             HStack {
-                                if isPurchasing {
+                                if isPurchasing || premiumManager.isLoading {
                                     ProgressView()
                                         .tint(.white)
                                 } else {
@@ -123,7 +122,9 @@ struct PremiumPaywallView: View {
                         .disabled(isPurchasing || premiumManager.isLoading)
                         
                         Button {
-                            onRestore()
+                            Task {
+                                await handleRestore()
+                            }
                         } label: {
                             Text("Restore Purchases")
                                 .font(.body)
@@ -146,6 +147,18 @@ struct PremiumPaywallView: View {
                 }
             }
         }
+    }
+    
+    private func handlePurchase() async {
+        let success = await premiumManager.purchasePremium()
+        if success {
+            dismiss()
+        }
+        isPurchasing = false
+    }
+    
+    private func handleRestore() async {
+        await premiumManager.restorePurchases()
     }
 }
 

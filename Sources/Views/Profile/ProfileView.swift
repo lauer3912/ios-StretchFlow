@@ -29,18 +29,7 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showPaywall) {
-                PremiumPaywallView(
-                    onPurchase: {
-                        Task {
-                            await purchasePremium()
-                        }
-                    },
-                    onRestore: {
-                        Task {
-                            await restorePurchases()
-                        }
-                    }
-                )
+                PremiumPaywallView()
             }
         }
     }
@@ -318,26 +307,7 @@ struct ProfileView: View {
         formatter.dateFormat = "MMM yyyy"
         return formatter.string(from: Date())
     }
-    
-    private func purchasePremium() async {
-        let success = await premiumManager.purchasePremium()
-        if success {
-            showPaywall = false
-        }
-    }
-    
-    private func restorePurchases() async {
-        await premiumManager.restorePurchases()
-    }
 }
-
-struct PremiumSettingsToggleRow: View {
-    let title: String
-    let icon: String
-    @Binding var isOn: Bool
-    let isLocked: Bool
-    let onTap: () -> Void
-    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         HStack(spacing: 16) {

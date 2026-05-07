@@ -136,11 +136,6 @@ class DataManager: ObservableObject {
     var premiumSessions: [StretchSession] {
         sessions
     }
-    
-    // Check if session requires premium
-    func isSessionLocked(_ session: StretchSession) -> Bool {
-        PremiumManager.shared.isSessionLocked(session)
-    }
 
     var favoriteSessions: [StretchSession] {
         sessions.filter { progress.favoriteSessionIds.contains($0.id) }

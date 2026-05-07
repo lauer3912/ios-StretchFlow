@@ -2,7 +2,7 @@ import Foundation
 import StoreKit
 
 @MainActor
-class PremiumManager: ObservableObject {
+final class PremiumManager: ObservableObject {
     static let shared = PremiumManager()
     
     @Published var isPremiumActive: Bool = false
@@ -17,10 +17,6 @@ class PremiumManager: ObservableObject {
     init() {
         loadPremiumStatus()
         startUpdateListener()
-    }
-    
-    deinit {
-        updateListenerTask?.cancel()
     }
     
     // MARK: - Public Methods
@@ -123,28 +119,20 @@ class PremiumManager: ObservableObject {
         isPremiumActive = UserDefaults.standard.bool(forKey: premiumKey)
     }
     
-    private func updatePremiumStatus(_ isActive: Bool) async {
+    private func updatePremiumStatus(_ isActive: Bool) {
         isPremiumActive = isActive
         UserDefaults.standard.set(isActive, forKey: premiumKey)
     }
     
     private func startUpdateListener() {
-        updateListenerTask = Task.detached { [weak self] in
+        updateListenerTask = Task { [weak self] in
             for await result in Transaction.updates {
                 do {
-                    let transaction = try self?.checkVerified(result)
-                    
-                    if let transaction {
-                        await transaction.finish()
-                        
-                        await MainActor.run {
-                            Task {
-                                await self?.checkPremiumStatus()
-                            }
-                        }
-                    }
+                    guard let transaction = try self?.checkVerified(result) else { continue }
+                    await transaction.finish()
+                    await self?.checkPremiumStatus()
                 } catch {
-                    // Handle verification error
+                    // Handle verification error silently
                 }
             }
         }
@@ -153,7 +141,7 @@ class PremiumManager: ObservableObject {
     private func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
         case .unverified:
-            throw StoreKitError.verificationFailed
+            throw PremiumStoreError.verificationFailed
         case .verified(let safe):
             return safe
         }
@@ -161,46 +149,28 @@ class PremiumManager: ObservableObject {
     
     // MARK: - Feature Access
     
-    var canAccessPremiumFeatures: Bool {
-        isPremiumActive
-    }
+    var canAccessPremiumFeatures: Bool { isPremiumActive }
+    var canAccessAdvancedStats: Bool { isPremiumActive }
+    var canAccessVoiceGuidance: Bool { isPremiumActive }
+    var canAccessReminders: Bool { isPremiumActive }
+    var canAccessAchievements: Bool { isPremiumActive }
+    var canAccessAllSessions: Bool { isPremiumActive }
+    var canAccessiCloudSync: Bool { isPremiumActive }
     
-    var canAccessAdvancedStats: Bool {
-        isPremiumActive
-    }
+    // MARK: - Session Lock Check
     
-    var canAccessVoiceGuidance: Bool {
-        isPremiumActive
-    }
-    
-    var canAccessReminders: Bool {
-        isPremiumActive
-    }
-    
-    var canAccessAchievements: Bool {
-        isPremiumActive
-    }
-    
-    var canAccessAllSessions: Bool {
-        isPremiumActive
-    }
-    
-    var canAccessiCloudSync: Bool {
-        isPremiumActive
-    }
-    
-    // Locked sessions for free users (first 10 sessions only)
     func isSessionLocked(_ session: StretchSession) -> Bool {
-        if isPremiumActive { return false }
+        guard !isPremiumActive else { return false }
         let freeSessionCount = 10
-        guard let allSessions = SessionData.allSessions as [StretchSession]? else { return false }
-        let sessionIndex = allSessions.firstIndex(where: { $0.id == session.id }) ?? -1
-        return sessionIndex >= freeSessionCount
+        guard let index = SessionData.allSessions.firstIndex(where: { $0.id == session.id }) else {
+            return false
+        }
+        return index >= freeSessionCount
     }
 }
 
-// StoreKit Error extension
-enum StoreKitError: Error {
+// StoreKit Error enum
+enum PremiumStoreError: Error {
     case verificationFailed
     case productNotFound
     case purchaseFailed
