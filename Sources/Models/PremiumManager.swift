@@ -69,9 +69,8 @@ final class PremiumManager: ObservableObject {
         
         do {
             try await AppStore.sync()
-            let transactions = try await Transaction.currentEntitlements
             
-            for transaction in transactions {
+            for await transaction in Transaction.currentEntitlements {
                 if case .verified(let safeTransaction) = transaction {
                     if safeTransaction.productID == productId {
                         await updatePremiumStatus(true)
@@ -93,10 +92,8 @@ final class PremiumManager: ObservableObject {
     
     func checkPremiumStatus() async {
         do {
-            let transactions = try await Transaction.currentEntitlements
-            
             var hasActivePremium = false
-            for transaction in transactions {
+            for await transaction in Transaction.currentEntitlements {
                 if case .verified(let safeTransaction) = transaction {
                     if safeTransaction.productID == productId {
                         if safeTransaction.revocationDate == nil {
