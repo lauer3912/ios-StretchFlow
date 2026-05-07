@@ -309,6 +309,14 @@ struct ProfileView: View {
     }
 }
 
+struct PremiumSettingsToggleRow: View {
+    let title: String
+    let icon: String
+    @Binding var isOn: Bool
+    let isLocked: Bool
+    let onTap: () -> Void
+    @EnvironmentObject var themeManager: ThemeManager
+
     var body: some View {
         HStack(spacing: 16) {
             Image(systemName: icon)
