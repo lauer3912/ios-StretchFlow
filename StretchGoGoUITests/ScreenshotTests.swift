@@ -25,41 +25,58 @@ final class ScreenshotTests: XCTestCase {
         print("Captured: \(path) (\(data.count) bytes)")
     }
 
-    // MARK: - Tab navigation using accessibilityIdentifier (SOP §6.3)
+    // MARK: - Tab navigation using label matching (SOP §6.3 fallback)
 
-    private func tapTab(identifier: String) {
-        let predicate = NSPredicate(format: "accessibilityIdentifier == %@", identifier)
-        let tabButton = app.buttons.element(matching: predicate).firstMatch
+    private func tapTab(label: String) {
+        // Try matching by label (SwiftUI TabView uses systemImage + label)
+        var tapped = false
         
-        if tabButton.exists && tabButton.isHittable {
-            tabButton.tap()
+        // Method 1: buttons by label
+        let button = app.buttons[label]
+        if button.exists && button.isHittable {
+            button.tap()
             Thread.sleep(forTimeInterval: 2.0)
-            return
+            tapped = true
+        } else if button.firstMatch.exists {
+            button.firstMatch.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+            tapped = true
         }
         
-        // Fallback: try by label
-        let labelMap: [String: String] = [
-            "tab_home": "Home",
-            "tab_library": "Library",
-            "tab_stats": "Stats",
-            "tab_profile": "Profile"
-        ]
-        
-        if let label = labelMap[identifier] {
-            let byLabel = app.buttons[label]
-            if byLabel.exists && byLabel.isHittable {
-                byLabel.tap()
+        // Method 2: staticTexts in tab bar (iOS may render label as text)
+        if !tapped {
+            let staticText = app.staticTexts[label]
+            if staticText.exists && staticText.isHittable {
+                staticText.tap()
                 Thread.sleep(forTimeInterval: 2.0)
-                return
-            }
-            if byLabel.firstMatch.exists {
-                byLabel.firstMatch.tap()
-                Thread.sleep(forTimeInterval: 2.0)
-                return
+                tapped = true
             }
         }
         
-        print("WARNING: Could not tap tab: \(identifier)")
+        // Method 3: coordinate fallback for iPad (SOP §6.3)
+        if !tapped {
+            print("WARNING: Could not find tab: \(label), using coordinate fallback")
+            let win = app.windows.firstMatch
+            let frame = win.frame
+            let tabBarHeight: CGFloat = frame.height > 1000 ? 85 : 70  // iPad is taller
+            let tabCount: CGFloat = 4
+            let tabWidth = frame.width / tabCount
+            let yCenter = frame.height - tabBarHeight / 2
+
+            let tabMap: [String: Int] = [
+                "Home": 0,
+                "Library": 1,
+                "Stats": 2,
+                "Profile": 3
+            ]
+            let tabIndex = tabMap[label] ?? 0
+            let xCenter = tabWidth * (CGFloat(tabIndex) + 0.5)
+
+            let coord = win.coordinate(withNormalizedOffset: .zero)
+                .withOffset(CGVector(dx: xCenter, dy: yCenter))
+            coord.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+        }
     }
 
     // MARK: - iPhone 6.9" (1290×2796 - iPhone 16 Pro Max) - SOP §6.1
@@ -69,13 +86,13 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPhone_69_02_Library() {
-        tapTab(identifier: "tab_library")
+        tapTab(label: "Library")
         capture("iPhone_69_portrait_02_Library")
     }
 
     func testiPhone_69_03_SessionDetail() {
         // Navigate to Library first
-        tapTab(identifier: "tab_library")
+        tapTab(label: "Library")
         Thread.sleep(forTimeInterval: 1.0)
         
         // Tap first session card
@@ -87,12 +104,12 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPhone_69_04_Stats() {
-        tapTab(identifier: "tab_stats")
+        tapTab(label: "Stats")
         capture("iPhone_69_portrait_04_Stats")
     }
 
     func testiPhone_69_05_Profile() {
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         capture("iPhone_69_portrait_05_Profile")
     }
 
@@ -103,12 +120,12 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPad_13_02_Library() {
-        tapTab(identifier: "tab_library")
+        tapTab(label: "Library")
         capture("iPad_13_portrait_02_Library")
     }
 
     func testiPad_13_03_SessionDetail() {
-        tapTab(identifier: "tab_library")
+        tapTab(label: "Library")
         Thread.sleep(forTimeInterval: 1.0)
         
         if app.collectionViews.children(matching: .cell).firstMatch.exists {
@@ -119,20 +136,20 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPad_13_04_Stats() {
-        tapTab(identifier: "tab_stats")
+        tapTab(label: "Stats")
         capture("iPad_13_portrait_04_Stats")
     }
 
     func testiPad_13_05_Profile() {
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         capture("iPad_13_portrait_05_Profile")
     }
 
     // MARK: - In-App Purchase Screenshots - SOP §6.1.1 (Apple 强制要求)
 
-    func testInAppPurchase_01_PremiumPaywall() {
+    func testInAppPurchase_01_PremiumPaywall_iPhone() {
         // Navigate to Profile
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         Thread.sleep(forTimeInterval: 1.0)
         
         // Scroll to see premium section if needed
@@ -151,7 +168,7 @@ final class ScreenshotTests: XCTestCase {
 
     func testInAppPurchase_02_PremiumPaywall_iPad() {
         // Navigate to Profile on iPad
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         Thread.sleep(forTimeInterval: 1.0)
         
         app.scrollViews.firstMatch.swipeUp()
@@ -166,9 +183,9 @@ final class ScreenshotTests: XCTestCase {
         capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_购买界面_iPad13")
     }
 
-    func testInAppPurchase_03_SubscribeButton() {
+    func testInAppPurchase_03_SubscribeButton_iPhone() {
         // Navigate to Profile and open paywall
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         Thread.sleep(forTimeInterval: 1.0)
         
         app.scrollViews.firstMatch.swipeUp()
@@ -180,19 +197,14 @@ final class ScreenshotTests: XCTestCase {
             Thread.sleep(forTimeInterval: 2.5)
         }
         
-        // Try to tap Subscribe Now button if visible
-        let subscribeButton = app.buttons["Subscribe Now"]
-        if subscribeButton.exists && subscribeButton.isHittable {
-            // Don't tap, just capture the paywall with button visible
-            Thread.sleep(forTimeInterval: 1.0)
-        }
-        
+        // Capture with Subscribe Now button visible
+        Thread.sleep(forTimeInterval: 1.0)
         capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_订阅按钮_iPhone69")
     }
 
-    func testInAppPurchase_04_RestorePurchases() {
+    func testInAppPurchase_04_RestorePurchases_iPhone() {
         // Navigate to Profile
-        tapTab(identifier: "tab_profile")
+        tapTab(label: "Profile")
         Thread.sleep(forTimeInterval: 1.0)
         
         // Scroll to find restore purchases
