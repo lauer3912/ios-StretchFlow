@@ -25,60 +25,60 @@ final class ScreenshotTests: XCTestCase {
         print("Captured: \(path) (\(data.count) bytes)")
     }
 
-    // MARK: - Tab navigation - using button label matching
+    // MARK: - Tab navigation using accessibilityIdentifier (SOP §6.3)
 
-    private func tapTab(label: String) {
-        let button = app.buttons[label]
-        if button.exists && button.isHittable {
-            button.tap()
+    private func tapTab(identifier: String) {
+        let predicate = NSPredicate(format: "accessibilityIdentifier == %@", identifier)
+        let tabButton = app.buttons.element(matching: predicate).firstMatch
+        
+        if tabButton.exists && tabButton.isHittable {
+            tabButton.tap()
             Thread.sleep(forTimeInterval: 2.0)
             return
         }
-
-        // Fallback: try firstMatch
-        if app.buttons[label].firstMatch.exists {
-            app.buttons[label].firstMatch.tap()
-            Thread.sleep(forTimeInterval: 2.0)
-            return
-        }
-
-        print("WARNING: Could not find tab button: \(label), using coordinate fallback")
-        // Coordinate fallback
-        let win = app.windows.firstMatch
-        let frame = win.frame
-        let tabBarHeight: CGFloat = 83
-        let tabCount: CGFloat = 4
-        let tabWidth = frame.width / tabCount
-        let yCenter = frame.height - tabBarHeight / 2
-
-        let tabMap: [String: Int] = [
-            "Home": 0,
-            "Library": 1,
-            "Stats": 2,
-            "Profile": 3
+        
+        // Fallback: try by label
+        let labelMap: [String: String] = [
+            "tab_home": "Home",
+            "tab_library": "Library",
+            "tab_stats": "Stats",
+            "tab_profile": "Profile"
         ]
-        let tabIndex = tabMap[label] ?? 0
-        let xCenter = tabWidth * (CGFloat(tabIndex) + 0.5)
-
-        let coord = win.coordinate(withNormalizedOffset: .zero)
-            .withOffset(CGVector(dx: xCenter, dy: yCenter))
-        coord.tap()
-        Thread.sleep(forTimeInterval: 2.0)
+        
+        if let label = labelMap[identifier] {
+            let byLabel = app.buttons[label]
+            if byLabel.exists && byLabel.isHittable {
+                byLabel.tap()
+                Thread.sleep(forTimeInterval: 2.0)
+                return
+            }
+            if byLabel.firstMatch.exists {
+                byLabel.firstMatch.tap()
+                Thread.sleep(forTimeInterval: 2.0)
+                return
+            }
+        }
+        
+        print("WARNING: Could not tap tab: \(identifier)")
     }
 
-    // MARK: - iPhone 6.9" (1290×2796 - iPhone 16 Pro Max)
+    // MARK: - iPhone 6.9" (1290×2796 - iPhone 16 Pro Max) - SOP §6.1
 
     func testiPhone_69_01_Home() {
         capture("iPhone_69_portrait_01_Home")
     }
 
     func testiPhone_69_02_Library() {
-        tapTab(label: "Library")
+        tapTab(identifier: "tab_library")
         capture("iPhone_69_portrait_02_Library")
     }
 
     func testiPhone_69_03_SessionDetail() {
-        // Tap on a session to go to detail
+        // Navigate to Library first
+        tapTab(identifier: "tab_library")
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        // Tap first session card
         if app.collectionViews.children(matching: .cell).firstMatch.exists {
             app.collectionViews.children(matching: .cell).firstMatch.tap()
             Thread.sleep(forTimeInterval: 2.0)
@@ -87,27 +87,30 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPhone_69_04_Stats() {
-        tapTab(label: "Stats")
+        tapTab(identifier: "tab_stats")
         capture("iPhone_69_portrait_04_Stats")
     }
 
     func testiPhone_69_05_Profile() {
-        tapTab(label: "Profile")
+        tapTab(identifier: "tab_profile")
         capture("iPhone_69_portrait_05_Profile")
     }
 
-    // MARK: - iPad 13" (2048×2732 - iPad Pro 13" M4)
+    // MARK: - iPad 13" (2048×2732 - iPad Pro 13" M4) - SOP §6.1
 
     func testiPad_13_01_Home() {
         capture("iPad_13_portrait_01_Home")
     }
 
     func testiPad_13_02_Library() {
-        tapTab(label: "Library")
+        tapTab(identifier: "tab_library")
         capture("iPad_13_portrait_02_Library")
     }
 
     func testiPad_13_03_SessionDetail() {
+        tapTab(identifier: "tab_library")
+        Thread.sleep(forTimeInterval: 1.0)
+        
         if app.collectionViews.children(matching: .cell).firstMatch.exists {
             app.collectionViews.children(matching: .cell).firstMatch.tap()
             Thread.sleep(forTimeInterval: 2.0)
@@ -116,37 +119,83 @@ final class ScreenshotTests: XCTestCase {
     }
 
     func testiPad_13_04_Stats() {
-        tapTab(label: "Stats")
+        tapTab(identifier: "tab_stats")
         capture("iPad_13_portrait_04_Stats")
     }
 
     func testiPad_13_05_Profile() {
-        tapTab(label: "Profile")
+        tapTab(identifier: "tab_profile")
         capture("iPad_13_portrait_05_Profile")
     }
 
-    // MARK: - In-App Purchase Screenshots
+    // MARK: - In-App Purchase Screenshots - SOP §6.1.1 (Apple 强制要求)
 
     func testInAppPurchase_01_PremiumPaywall() {
-        // Navigate to Profile and tap premium upgrade
-        tapTab(label: "Profile")
+        // Navigate to Profile
+        tapTab(identifier: "tab_profile")
         Thread.sleep(forTimeInterval: 1.0)
+        
+        // Scroll to see premium section if needed
+        app.scrollViews.firstMatch.swipeUp()
+        Thread.sleep(forTimeInterval: 0.5)
         
         // Look for premium upgrade button and tap it
         let premiumButton = app.buttons["Upgrade to Premium"]
         if premiumButton.exists && premiumButton.isHittable {
             premiumButton.tap()
-            Thread.sleep(forTimeInterval: 2.0)
+            Thread.sleep(forTimeInterval: 2.5)  // Wait for paywall animation
         }
         
-        capture("InAppPurchase_01_PremiumPaywall")
+        capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_购买界面_iPhone69")
     }
 
-    func testInAppPurchase_02_RestoreOption() {
-        tapTab(label: "Profile")
+    func testInAppPurchase_02_PremiumPaywall_iPad() {
+        // Navigate to Profile on iPad
+        tapTab(identifier: "tab_profile")
         Thread.sleep(forTimeInterval: 1.0)
         
-        // Scroll down and look for restore purchases
+        app.scrollViews.firstMatch.swipeUp()
+        Thread.sleep(forTimeInterval: 0.5)
+        
+        let premiumButton = app.buttons["Upgrade to Premium"]
+        if premiumButton.exists && premiumButton.isHittable {
+            premiumButton.tap()
+            Thread.sleep(forTimeInterval: 2.5)
+        }
+        
+        capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_购买界面_iPad13")
+    }
+
+    func testInAppPurchase_03_SubscribeButton() {
+        // Navigate to Profile and open paywall
+        tapTab(identifier: "tab_profile")
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        app.scrollViews.firstMatch.swipeUp()
+        Thread.sleep(forTimeInterval: 0.5)
+        
+        let premiumButton = app.buttons["Upgrade to Premium"]
+        if premiumButton.exists && premiumButton.isHittable {
+            premiumButton.tap()
+            Thread.sleep(forTimeInterval: 2.5)
+        }
+        
+        // Try to tap Subscribe Now button if visible
+        let subscribeButton = app.buttons["Subscribe Now"]
+        if subscribeButton.exists && subscribeButton.isHittable {
+            // Don't tap, just capture the paywall with button visible
+            Thread.sleep(forTimeInterval: 1.0)
+        }
+        
+        capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_订阅按钮_iPhone69")
+    }
+
+    func testInAppPurchase_04_RestorePurchases() {
+        // Navigate to Profile
+        tapTab(identifier: "tab_profile")
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        // Scroll to find restore purchases
         app.scrollViews.firstMatch.swipeUp()
         Thread.sleep(forTimeInterval: 1.0)
         
@@ -156,6 +205,6 @@ final class ScreenshotTests: XCTestCase {
             Thread.sleep(forTimeInterval: 2.0)
         }
         
-        capture("InAppPurchase_02_RestoreOption")
+        capture("IAP_com.ggsheng.StretchGoGo.PremiumMonthly_恢复购买_iPhone69")
     }
 }
