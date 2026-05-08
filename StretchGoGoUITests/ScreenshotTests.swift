@@ -66,7 +66,7 @@ final class ScreenshotTests: XCTestCase {
         Thread.sleep(forTimeInterval: 2.0)
     }
 
-    // MARK: - iPhone 6.9" (1320×2868 - iPhone 16 Pro Max)
+    // MARK: - iPhone 6.9" (1290×2796 - iPhone 16 Pro Max)
 
     func testiPhone_69_01_Home() {
         capture("iPhone_69_portrait_01_Home")
@@ -77,56 +77,23 @@ final class ScreenshotTests: XCTestCase {
         capture("iPhone_69_portrait_02_Library")
     }
 
-    func testiPhone_69_03_Stats() {
+    func testiPhone_69_03_SessionDetail() {
+        // Tap on a session to go to detail
+        if app.collectionViews.children(matching: .cell).firstMatch.exists {
+            app.collectionViews.children(matching: .cell).firstMatch.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+        }
+        capture("iPhone_69_portrait_03_SessionDetail")
+    }
+
+    func testiPhone_69_04_Stats() {
         tapTab(label: "Stats")
-        capture("iPhone_69_portrait_03_Stats")
+        capture("iPhone_69_portrait_04_Stats")
     }
 
-    func testiPhone_69_04_Profile() {
+    func testiPhone_69_05_Profile() {
         tapTab(label: "Profile")
-        capture("iPhone_69_portrait_04_Profile")
-    }
-
-    // MARK: - iPhone 6.5" (1284×2778 - iPhone 14 Plus)
-
-    func testiPhone_65_01_Home() {
-        capture("iPhone_65_portrait_01_Home")
-    }
-
-    func testiPhone_65_02_Library() {
-        tapTab(label: "Library")
-        capture("iPhone_65_portrait_02_Library")
-    }
-
-    func testiPhone_65_03_Stats() {
-        tapTab(label: "Stats")
-        capture("iPhone_65_portrait_03_Stats")
-    }
-
-    func testiPhone_65_04_Profile() {
-        tapTab(label: "Profile")
-        capture("iPhone_65_portrait_04_Profile")
-    }
-
-    // MARK: - iPhone 6.3" (1206×2622 - iPhone 16 Pro)
-
-    func testiPhone_63_01_Home() {
-        capture("iPhone_63_portrait_01_Home")
-    }
-
-    func testiPhone_63_02_Library() {
-        tapTab(label: "Library")
-        capture("iPhone_63_portrait_02_Library")
-    }
-
-    func testiPhone_63_03_Stats() {
-        tapTab(label: "Stats")
-        capture("iPhone_63_portrait_03_Stats")
-    }
-
-    func testiPhone_63_04_Profile() {
-        tapTab(label: "Profile")
-        capture("iPhone_63_portrait_04_Profile")
+        capture("iPhone_69_portrait_05_Profile")
     }
 
     // MARK: - iPad 13" (2048×2732 - iPad Pro 13" M4)
@@ -140,34 +107,55 @@ final class ScreenshotTests: XCTestCase {
         capture("iPad_13_portrait_02_Library")
     }
 
-    func testiPad_13_03_Stats() {
+    func testiPad_13_03_SessionDetail() {
+        if app.collectionViews.children(matching: .cell).firstMatch.exists {
+            app.collectionViews.children(matching: .cell).firstMatch.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+        }
+        capture("iPad_13_portrait_03_SessionDetail")
+    }
+
+    func testiPad_13_04_Stats() {
         tapTab(label: "Stats")
-        capture("iPad_13_portrait_03_Stats")
+        capture("iPad_13_portrait_04_Stats")
     }
 
-    func testiPad_13_04_Profile() {
+    func testiPad_13_05_Profile() {
         tapTab(label: "Profile")
-        capture("iPad_13_portrait_04_Profile")
+        capture("iPad_13_portrait_05_Profile")
     }
 
-    // MARK: - iPad 11" (1668×2388 - iPad Pro 11" M4)
+    // MARK: - In-App Purchase Screenshots
 
-    func testiPad_11_01_Home() {
-        capture("iPad_11_portrait_01_Home")
-    }
-
-    func testiPad_11_02_Library() {
-        tapTab(label: "Library")
-        capture("iPad_11_portrait_02_Library")
-    }
-
-    func testiPad_11_03_Stats() {
-        tapTab(label: "Stats")
-        capture("iPad_11_portrait_03_Stats")
-    }
-
-    func testiPad_11_04_Profile() {
+    func testInAppPurchase_01_PremiumPaywall() {
+        // Navigate to Profile and tap premium upgrade
         tapTab(label: "Profile")
-        capture("iPad_11_portrait_04_Profile")
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        // Look for premium upgrade button and tap it
+        let premiumButton = app.buttons["Upgrade to Premium"]
+        if premiumButton.exists && premiumButton.isHittable {
+            premiumButton.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+        }
+        
+        capture("InAppPurchase_01_PremiumPaywall")
+    }
+
+    func testInAppPurchase_02_RestoreOption() {
+        tapTab(label: "Profile")
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        // Scroll down and look for restore purchases
+        app.scrollViews.firstMatch.swipeUp()
+        Thread.sleep(forTimeInterval: 1.0)
+        
+        let restoreButton = app.buttons["Restore Purchases"]
+        if restoreButton.exists && restoreButton.isHittable {
+            restoreButton.tap()
+            Thread.sleep(forTimeInterval: 2.0)
+        }
+        
+        capture("InAppPurchase_02_RestoreOption")
     }
 }
