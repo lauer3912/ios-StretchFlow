@@ -1,86 +1,36 @@
 # StretchGoGo - App Store Listing
 > ⚠️ **直接对照本文件填写 App Store Connect，无需查阅其他文档。**
 >
-> 生成时间: 2026-05-08 | 内购类型: 自动续期订阅 $0.99/月
+> 生成时间: 2026-05-08 | 内购类型: 自动续期订阅 $0.99/月 | 最后更新: 2026-06-10
 
 ---
 
-## 第四步：创建 App（左侧菜单 → "我的 App" → "+" → "新建 App"）
+## 1. 元数据（App Store Connect → App Store 信息）
 
-| App Store Connect 字段 | 填写值 | 操作说明 |
-|----------------------|-------|---------|
-| 平台 | iOS | 勾选 iOS |
-| 名称 | StretchGoGo | 输入 App Store 显示名称 |
-| 主语言 | English | 下拉选择 English |
-| Bundle ID | com.ggsheng.StretchGoGo | 从下拉列表中选择（Xcode 自动创建）|
-| SKU | StretchGoGo-100 | 输入唯一标识（随便填）|
-
----
-
-## 第五步：App 隐私（左侧菜单 → "App 隐私"）
-
-| App Store Connect 问题 | 选择 | 说明 |
-|----------------------|------|------|
-| 健康与健身 | 否 | App 不收集健康数据（用户本地追踪）|
-| 位置 | 否 | 不使用位置功能 |
-| 联系信息 | 否 | 不收集联系信息 |
-| 标识符 | 否 | 不使用广告标识符 |
-| 浏览历史与搜索 | 否 | App 不收集浏览数据 |
-| **购买行为** | **是** | **包含内购订阅功能** |
-| 崩溃日志 | 否 | 未集成崩溃统计 SDK |
-| 性能数据 | 否 | 未集成分析 SDK |
-| 广告 | 否 | 不使用广告 |
-| **隐私政策网址** | https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html | 粘贴到底部输入框 |
-
-→ 点**"存储"**按钮保存
+| 字段 | 值 | 说明 |
+|------|---|------|
+| **名称** | StretchGoGo | App Store 显示名 |
+| **副标题** | Your daily stretch companion | 最多30字符 |
+| **版本** | 1.0.0 | 须与 project.yml 一致 |
+| **主语言** | English | |
+| **版权** | 2026 StretchGoGo | 格式: YYYY OwnerName |
+| **年龄分级** | 4+ | |
+| **类别** | Health & Fitness | 主类别 |
 
 ---
 
-## 第六步：定价与范围（左侧菜单 → "定价与范围"）
+## 2. 促销文本（App Store Connect → App Store 信息）
 
-| App Store Connect 字段 | 填写值 |
-|----------------------|-------|
-| 价格 | **Free**（内购变现：$0.99/月 Premium）|
-| 可用性 | 全部地区（勾选所有地区）|
-
-→ 点**"存储"**按钮保存
-
----
-
-## 第七步：App Store 信息（左侧菜单 → "App Store 信息"）
-
-| App Store Connect 字段 | 填写值 |
-|----------------------|-------|
-| **名称** | StretchGoGo |
-| **副标题** | Your daily stretch companion（最多30字符）|
-| **隐私政策网址** | （已在第五步填写，跳过）|
-| **技术支持网址** | https://lauer3912.github.io/ios-StretchFlow/ |
-| **营销网址** | https://lauer3912.github.io/ios-StretchFlow |
-| **版本** | 1.0.0（须与 project.yml 一致）|
-| **新版本内容** | 见下方 |
-| **描述** | 见下方（最多4000字符）|
-| **关键词** | stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexibility, daily workout, stretch app, posture, back pain, office stretch（最多100字符）|
-| **促销文本** | StretchGoGo -- Your daily stretch companion. $0.99/month. Try today.（最多170字符）|
-| **App Store 图标** | 上传文件：AppStore/Assets/Icon/Icon-1024@1x.png |
-| **版权** | © 2026 StretchGoGo |
-| **内容权利** | 否（所有内容均为原创）|
-| **年龄分级** | 4+（点"设置年龄分级"选择）|
-| **主类别** | Health & Fitness |
-| **次类别** | （不选）|
-| **广告标识符** | 否（不使用 Advertising Identifier）|
-
-### 新版本内容
 ```
-Initial release of StretchGoGo.
-
-- 72+ guided stretch sessions
-- Smart timer with pause/resume
-- Dark & light theme support
-- Progress tracking & streak counter
-- Premium subscription for advanced features
+StretchGoGo -- Your daily stretch companion. $0.99/month. Try today.
 ```
 
-### 描述（完整文本）
+> 字符数: 67（限制 100）
+
+---
+
+## 3. 完整描述（App Store Connect → App Store 信息）
+
 ```
 **Start stretching today — your body will thank you.**
 
@@ -115,65 +65,98 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 Subscribe to unlock every feature. Cancel anytime.
 ```
 
-→ 点**"存储"**按钮保存
+> 字符数: ~900（限制 4000）
 
 ---
 
-## 第八步：截图（左侧菜单 → "App Store 截图"）
+## 4. 关键词（App Store Connect → App Store 信息）
 
-> ⚠️ **StretchGoGo 必须提供 6.9" (iPhone 14 Pro Max) 和 6.7" (iPhone 14/15 Pro) 两组截图才能提交**
+```
+stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexibility, daily workout, stretch app, posture, back pain, office stretch
+```
 
-截图文件位置：`AppStore/Screenshots/` 目录下
+> 字符数: 99（限制 100）
 
-| 上传区域 | 上传文件目录 | 张数 | 尺寸要求 |
-|---------|-------------|------|---------|
-| **iPhone 6.9" 英寸**（iPhone 14 Pro Max）| `AppStore/Screenshots/iPhone67/` | 至少5张 | 1290×2796 px 或 2796×1290 px |
-| **iPhone 6.7" 英寸**（iPhone 14/15 Pro）| `AppStore/Screenshots/iPhone69/` | 至少5张 | 1179×2556 px 或 2556×1179 px |
+---
 
-**截图要求**：
-- 必须显示 App 真实界面
+## 5. 支持 URL（App Store Connect → App Store 信息）
+
+| 字段 | 值 |
+|------|---|
+| **技术支持网址** | https://lauer3912.github.io/ios-StretchFlow/ |
+| **营销网址** | https://lauer3912.github.io/ios-StretchFlow |
+
+---
+
+## 5A. 版权信息
+
+| 字段 | 值 |
+|------|---|
+| **版权** | 2026 StretchGoGo |
+| **内容权利** | 否（所有内容均为原创）|
+
+---
+
+## 6. 截图（App Store Connect → App Store 截图）
+
+> ⚠️ StretchGoGo 必须提供 6.9" (iPhone 14 Pro Max) 和 6.7" (iPhone 14/15 Pro) 两组截图才能提交
+
+| 上传区域 | 目录 | 张数 | 尺寸要求 |
+|---------|------|------|---------|
+| **iPhone 6.9"**（iPhone 14 Pro Max）| `AppStore/Screenshots/iPhone67/` | 至少5张 | 1290×2796 px 或 2796×1290 px |
+| **iPhone 6.7"**（iPhone 14/15 Pro）| `AppStore/Screenshots/iPhone69/` | 至少5张 | 1179×2556 px 或 2556×1179 px |
+
+**截图要求：**
+- 必须显示 App 真实界面（不能用模拟器截图）
 - 5张截图需展示不同功能/页面
-- 不能使用模拟器截图（需真机或 Xcode 的 screenshot tool）
 
 ---
 
-## 内购产品配置（左侧菜单 → "内购"）
+## 7. App 隐私（App Store Connect → App 隐私）
 
-> ⚠️ **仅当 App 包含内购/订阅功能时需要。以下所有字段直接在此填写，无需查阅其他文件。**
+| 问题 | 选择 | 说明 |
+|------|------|------|
+| 健康与健身 | 否 | App 不收集健康数据（用户本地追踪）|
+| 位置 | 否 | 不使用位置功能 |
+| 联系信息 | 否 | 不收集联系信息 |
+| 标识符 | 否 | 不使用广告标识符 |
+| 浏览历史与搜索 | 否 | App 不收集浏览数据 |
+| **购买行为** | **是** | **包含内购订阅功能** |
+| 崩溃日志 | 否 | 未集成崩溃统计 SDK |
+| 性能数据 | 否 | 未集成分析 SDK |
+| 广告 | 否 | 不使用广告 |
+| **隐私政策网址** | https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html | |
 
-### 一、协议准备（必须先在 App Store Connect 完成）
+---
+
+## 8. 定价与范围（App Store Connect → 定价与范围）
+
+| 字段 | 值 |
+|------|---|
+| 价格 | **Free**（内购变现：$0.99/月 Premium）|
+| 可用性 | 全部地区 |
+
+---
+
+## 9. 内购（App Store Connect → 内购）
+
+### 9.1 协议准备（先完成才能提交）
 
 | 操作项 | 状态 | 说明 |
 |-------|------|------|
-| 签署**付费应用协议** | ⬜ 未签署 | App Store Connect → 协议 → 付费应用协议 |
-| 填写**银行信息** | ⬜ 未填写 | 收款账户，验证可能需要1-2天 |
-| 填写**税务信息** | ⬜ 未填写 | 美国 W-9 或 W-8BEN 表单 |
+| 签署付费应用协议 | ⬜ 未签署 | App Store Connect → 协议 → 付费应用协议 |
+| 填写银行信息 | ⬜ 未填写 | 收款账户，验证可能需要1-2天 |
+| 填写税务信息 | ⬜ 未填写 | 美国 W-9 或 W-8BEN 表单 |
 
-> ⚠️ **以上三者全部"有效"后才能创建内购产品**
+### 9.2 自动续期订阅
 
-### 二、自动续期订阅（Subscription）
-
-#### 订阅组配置
-
-| 订阅组名称 | 组内包含的产品 ID |
-|-----------|------------------|
-| PremiumGroup | com.ggsheng.StretchGoGo.PremiumMonthly |
-
-#### 订阅产品列表
-
-| 参考名称 | 产品 ID | 价格等级 | 显示名称(EN) | 描述(EN) | 时长 | 订阅组 |
-|---------|--------|---------|-------------|---------|------|--------|
-| Premium Monthly | com.ggsheng.StretchGoGo.PremiumMonthly | Tier 1 ($0.99) | Premium Monthly | Unlock all features: 72+ sessions, achievements, voice guidance, reminders, iCloud sync, advanced statistics. | 1 Month | PremiumGroup |
-
-#### 试用/折扣方案（Introductory Offers）
-
-| 产品 ID | 优惠类型 | 时长 | 价格 |
+| 订阅组 | 产品 ID | 价格 | 时长 |
 |--------|---------|------|------|
-| com.ggsheng.StretchGoGo.PremiumMonthly | **无** | 不提供免费试用 | 直接付费 |
+| PremiumGroup | com.ggsheng.StretchGoGo.PremiumMonthly | Tier 1 ($0.99) | 1 Month |
 
-> 📝 StretchGoGo 采用无试用订阅模式，用户订阅后立即收费
+> 无免费试用，用户订阅后立即收费
 
-#### 内购审核截图
+### 9.3 内购审核截图
 
 | 产品 | 截图要求 | 文件位置 |
 |------|---------|---------|
@@ -181,40 +164,58 @@ Subscribe to unlock every feature. Cancel anytime.
 
 ---
 
-## 第十步：审核信息（左侧菜单 → "审核信息"）
+## 10. 审核与合规
 
-| App Store Connect 字段 | 填写值 |
-|----------------------|-------|
+### 10.1 App Store Connect 创建 App
+
+| 字段 | 值 |
+|------|---|
+| 平台 | iOS |
+| 名称 | StretchGoGo |
+| 主语言 | English |
+| Bundle ID | com.ggsheng.StretchGoGo |
+| SKU | StretchGoGo-100 |
+
+### 10.2 审核信息
+
+| 字段 | 值 |
+|------|---|
 | 是否需要登录 | **否** |
 | Demo 数据说明 | 不需要（Free 用户可直接使用基础功能）|
 | 备注 | StretchGoGo is a stretching companion app with in-app purchase. Premium subscription ($0.99/month) unlocks all 72+ sessions, achievements, voice guidance, daily reminders, iCloud sync, and advanced statistics. No login required. |
 
----
+### 10.3 广告标识符
 
-## 第十一步：出口合规（左侧菜单 → "出口合规"）
+| 字段 | 值 |
+|------|---|
+| 广告标识符 (IDFA) | **否**（不使用 Advertising Identifier）|
 
-| App Store Connect 问题 | 答案 |
-|----------------------|------|
-| 是否使用加密 | **否**（Info.plist 已配置 `ITSAppUsesNonExemptEncryption = NO`）|
+### 10.4 健康相关声明
 
----
+> ⚠️ **Regulated Medical Device 声明**
 
-## 第五步补充：App 隐私 → 购买行为 = 是
+App 不含任何医疗设备功能。StretchGoGo 是一款健身/生活方式（lifestyle/wellness）辅助应用：
+- 不声称诊断、治疗或预防任何疾病
+- 不使用 HealthKit 数据用于医疗目的
+- 伸展指导仅供参考，不构成医疗建议
+- **NOT a medical device** — 用户应咨询医生后再开始任何健身计划
 
-> ⚠️ **StretchGoGo 包含内购，隐私配置中"购买行为"必须选"是"**
+### 10.5 App Encryption
 
-**隐私政策必须包含订阅条款**。在 `docs/PrivacyPolicy.html` 中添加：
+| 问题 | 答案 |
+|------|------|
+| 是否使用加密 | **否**（App 不使用 HTTPS/TLS 加密通讯）|
+| Export Compliance Classification | **Category 5** — 其中 `ITSAppUsesNonExemptEncryption = NO` 已配置，App 属于免于 export compliance 声明的情形 |
 
-```html
-<h2>In-App Purchases and Subscriptions</h2>
-<p>StretchGoGo offers auto-renewing subscriptions for premium features.</p>
-<ul>
-<li><strong>Premium Monthly:</strong> $0.99/month</li>
-<li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
-<li>Users can manage or cancel subscriptions via iOS Settings → Apple ID → Subscriptions.</li>
-<li>No refunds for unused portions of the subscription period.</li>
-</ul>
-```
+> App 纯本地运行，不包含任何 HTTPS/TLS 加密传输。
+> Info.plist 已配置 `ITSAppUsesNonExemptEncryption = NO`
+> 根据美国 EAR 法规，纯本地离线 App 不涉及加密技术出口，无需填写 CCAT 表格
+
+### 10.6 App Store Server Notifications
+
+| 问题 | 答案 |
+|------|------|
+| App Store Server Notifications 状态 | **N/A**（无服务器端收据验证需求，订阅通过 Apple 服务器处理）|
 
 ---
 
