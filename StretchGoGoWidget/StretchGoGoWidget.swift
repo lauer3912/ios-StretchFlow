@@ -19,7 +19,8 @@ struct StretchGoGoWidgetProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<StretchGoGoWidgetEntry>) -> Void) {
-        let entry = StretchGoGoWidgetEntry(date: Date(), streak: UserDefaults.standard.integer(forKey: "streak"), todayMinutes: UserDefaults.standard.integer(forKey: "todayMinutes"), completed: UserDefaults.standard.bool(forKey: "todayCompleted"))
+        let sharedDefaults = UserDefaults(suiteName: "group.com.ggsheng.StretchGoGo") ?? UserDefaults.standard
+        let entry = StretchGoGoWidgetEntry(date: Date(), streak: sharedDefaults.integer(forKey: "streak"), todayMinutes: sharedDefaults.integer(forKey: "todayMinutes"), completed: sharedDefaults.bool(forKey: "todayCompleted"))
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
