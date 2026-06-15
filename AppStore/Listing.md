@@ -13,7 +13,7 @@
 | **副标题** | Your daily stretch companion | 最多30字符 |
 | **版本** | 1.0.0 | 须与 project.yml 一致 |
 | **主语言** | English | |
-| **版权** | 2026 StretchGoGo | 格式: YYYY OwnerName |
+| **版权** | 2026 lauer3912 | 格式: YYYY OwnerName |
 | **年龄分级** | 4+ | |
 | **类别** | Health & Fitness | 主类别 |
 
@@ -36,16 +36,16 @@ StretchGoGo -- Your daily stretch companion. $0.99/month. Try today.
 
 StretchGoGo helps you build a lasting stretching habit with guided sessions, progress tracking, and personalized routines. Whether you're recovering from injury, want to improve flexibility, or just need a quick break from sitting — StretchGoGo has you covered.
 
-🧘 **Guided Stretch Sessions**
+**Guided Stretch Sessions**
 Expert-designed stretching routines targeting neck, shoulders, back, legs, and full body. Each session includes clear visual demonstrations.
 
-⏱️ **Smart Timer**
+**Smart Timer**
 Clean, focused countdown timer with pause/resume and skip controls. Stay in the moment without looking at your phone.
 
-📊 **Progress Tracking**
+**Progress Tracking**
 Track your daily stretching streak, total sessions completed, and time spent stretching.
 
-🎨 **Beautiful Design**
+**Beautiful Design**
 Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy interface.
 
 **Free Features:**
@@ -72,10 +72,10 @@ Subscribe to unlock every feature. Cancel anytime.
 ## 4. 关键词（App Store Connect → App Store 信息）
 
 ```
-stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexibility, daily workout, stretch app, posture, back pain, office stretch
+stretch, flexibility, daily stretch, back pain, posture, office stretch, stretching, yoga, exercise
 ```
 
-> 字符数: 99（限制 100）
+> 字符数: 99（限制 100，留 1 char 缓冲）
 
 ---
 
@@ -92,7 +92,7 @@ stretch, yoga, fitness, health, exercise, workout, relaxation, meditation, flexi
 
 | 字段 | 值 |
 |------|---|
-| **版权** | 2026 StretchGoGo |
+| **版权** | 2026 lauer3912 |
 | **内容权利** | 否（所有内容均为原创）|
 
 ---
