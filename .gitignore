@@ -1,0 +1,21 @@
+# Build artifacts (per .DS_Store 06-24 教训)
+build/
+DerivedData/
+
+# macOS 噪声
+.DS_Store
+*.swp
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# CocoaPods (if added later)
+Pods/
+*.lock
+
+# Private keys (per #30 Internal Tester Access, .p8 不入库)
+*.p8
+private_keys/
