@@ -1,4 +1,4 @@
-# StretchGoGo v1.0.0 ASC 配置速查表 v1 (佛老爷 5-10 min 自跑)
+# StretchGoGo v3.0.0 ASC 配置速查表 v1 (佛老爷 5-10 min 自跑)
 
 > **写于**: 2026-06-24 10:30 CST (Katherine-E2wa1m D2 prep — 佛老爷 06-24 10:19 拍板 Q2 = $1.99 + 7d trial)
 > **给**: 佛罗多老爷

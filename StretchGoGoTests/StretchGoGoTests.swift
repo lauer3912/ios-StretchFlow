@@ -11,7 +11,8 @@ final class StretchGoGoTests: XCTestCase {
             duration: 600,
             difficulty: .beginner,
             bodyPart: .fullBody,
-            exercises: []
+            exercises: [],
+            thumbnailName: "morning_stretch"
         )
         let data = try JSONEncoder().encode(session)
         let decoded = try JSONDecoder().decode(StretchSession.self, from: data)
@@ -20,7 +21,7 @@ final class StretchGoGoTests: XCTestCase {
     }
 
     func testUserProgressInitialization() throws {
-        let progress = UserProgress()
+        let progress = UserProgress.empty
         XCTAssertEqual(progress.currentStreak, 0)
         XCTAssertEqual(progress.totalMinutes, 0)
     }
