@@ -39,7 +39,7 @@ final class PremiumManager: ObservableObject {
             switch result {
             case .success(let verification):
                 let transaction = try checkVerified(verification)
-                await updatePremiumStatus(true)
+                updatePremiumStatus(true)
                 await transaction.finish()
                 isLoading = false
                 return true
@@ -73,14 +73,14 @@ final class PremiumManager: ObservableObject {
             for await transaction in Transaction.currentEntitlements {
                 if case .verified(let safeTransaction) = transaction {
                     if safeTransaction.productID == productId {
-                        await updatePremiumStatus(true)
+                        updatePremiumStatus(true)
                         isLoading = false
                         return true
                     }
                 }
             }
             
-            await updatePremiumStatus(false)
+            updatePremiumStatus(false)
             isLoading = false
             return false
         } catch {
@@ -91,23 +91,18 @@ final class PremiumManager: ObservableObject {
     }
     
     func checkPremiumStatus() async {
-        do {
-            var hasActivePremium = false
-            for await transaction in Transaction.currentEntitlements {
-                if case .verified(let safeTransaction) = transaction {
-                    if safeTransaction.productID == productId {
-                        if safeTransaction.revocationDate == nil {
-                            hasActivePremium = true
-                            break
-                        }
+        var hasActivePremium = false
+        for await transaction in Transaction.currentEntitlements {
+            if case .verified(let safeTransaction) = transaction {
+                if safeTransaction.productID == productId {
+                    if safeTransaction.revocationDate == nil {
+                        hasActivePremium = true
+                        break
                     }
                 }
             }
-            
-            await updatePremiumStatus(hasActivePremium)
-        } catch {
-            // Keep current status on error
         }
+        updatePremiumStatus(hasActivePremium)
     }
     
     // MARK: - Private Methods

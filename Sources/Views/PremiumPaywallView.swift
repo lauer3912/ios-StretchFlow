@@ -158,7 +158,7 @@ struct PremiumPaywallView: View {
     }
     
     private func handleRestore() async {
-        await premiumManager.restorePurchases()
+        _ = await premiumManager.restorePurchases()
     }
 }
 
