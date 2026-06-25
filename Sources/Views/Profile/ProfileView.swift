@@ -265,7 +265,7 @@ struct ProfileView: View {
 
             VStack(spacing: 0) {
                 SettingsLinkRow(title: "Privacy Policy", icon: "hand.raised.fill") {
-                    if let url = URL(string: "https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html") {
+                    if let url = URL(string: "https://lauer3912.github.io/ios-StretchFlow/PrivacyPolicy.html") {
                         UIApplication.shared.open(url)
                     }
                 }
@@ -274,7 +274,7 @@ struct ProfileView: View {
                     .padding(.leading, 52)
 
                 SettingsLinkRow(title: "Terms of Service", icon: "doc.text.fill") {
-                    if let url = URL(string: "https://lauer3912.github.io/ios-StretchFlow/docs/TermsOfService.html") {
+                    if let url = URL(string: "https://lauer3912.github.io/ios-StretchFlow/TermsOfService.html") {
                         UIApplication.shared.open(url)
                     }
                 }
@@ -291,7 +291,7 @@ struct ProfileView: View {
                 Divider()
                     .padding(.leading, 52)
 
-                SettingsLinkRow(title: "Version 1.0.0", icon: "info.circle.fill") {
+                SettingsLinkRow(title: appVersionDisplay, icon: "info.circle.fill") {
                     // Version info
                 }
             }
@@ -306,6 +306,15 @@ struct ProfileView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
         return formatter.string(from: Date())
+    }
+
+    /// Dynamic app version pulled from the main bundle so the Profile row
+    /// always matches the actual built version (CFBundleShortVersionString + CFBundleVersion).
+    private var appVersionDisplay: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+        let build = info?["CFBundleVersion"] as? String ?? "1"
+        return "Version \(short) (\(build))"
     }
 }
 
