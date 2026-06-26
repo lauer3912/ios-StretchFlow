@@ -22,7 +22,10 @@ struct HomeView: View {
                     recommendedSection
 
                     // Pro Pick Banner (per 06-24 11:50 B 方案, 转化漏斗)
-                    proPickBannerSection
+                    // 只对非 Premium 用户显示 (per 佛老爷 10:43 拍板)
+                    if !premiumManager.isPremiumActive {
+                        proPickBannerSection
+                    }
 
                     // Recent Sessions
                     recentSection
@@ -35,14 +38,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingPaywall = true
-                    } label: {
-                        Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
-                    }
-                    .accessibilityLabel("Open Premium subscription")
-                    .accessibilityHint("Double tap to view StretchGoGo Pro subscription options")
+                    premiumToolbarButton
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -145,6 +141,21 @@ struct HomeView: View {
                 .buttonStyle(PlainButtonStyle())
                 .accessibilityLabel("Recommended: \(session.title)")
             }
+        }
+    }
+
+    @ViewBuilder
+    private var premiumToolbarButton: some View {
+        // Premium 用户不显示 crown 按钮 (per 佛老爷 10:43 拍板)
+        if !premiumManager.isPremiumActive {
+            Button {
+                showingPaywall = true
+            } label: {
+                Image(systemName: "crown.fill")
+                    .foregroundColor(.yellow)
+            }
+            .accessibilityLabel("Open Premium subscription")
+            .accessibilityHint("Double tap to view StretchGoGo Pro subscription options")
         }
     }
 
