@@ -75,6 +75,11 @@ struct PremiumPaywallView: View {
                     
                     // Pricing
                     VStack(spacing: 12) {
+                        Text("7-day free trial")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkAccent : AppColors.lightAccent)
+
                         HStack(spacing: 4) {
                             Text("$0.99")
                                 .font(.title)
@@ -84,7 +89,7 @@ struct PremiumPaywallView: View {
                                 .font(.body)
                                 .foregroundColor(themeManager.isDarkMode ? .gray : .gray)
                         }
-                        
+
                         Text("Cancel anytime")
                             .font(.caption)
                             .foregroundColor(.gray)

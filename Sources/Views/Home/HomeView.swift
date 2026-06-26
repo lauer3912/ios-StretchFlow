@@ -167,7 +167,7 @@ struct HomeView: View {
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
-                    Text("$1.99/month · 7-day free trial")
+                    Text("$0.99/month · 7-day free trial")
                         .font(.caption)
                         .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
                 }
@@ -198,7 +198,7 @@ struct HomeView: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
-        .accessibilityLabel("Unlock 72+ premium stretching sessions for 1.99 per month with 7-day free trial")
+        .accessibilityLabel("Unlock 72+ premium stretching sessions for 0.99 per month with 7-day free trial")
         .accessibilityHint("Double tap to view StretchGoGo Pro subscription options")
     }
 

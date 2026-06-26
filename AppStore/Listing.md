@@ -1,7 +1,7 @@
 # StretchGoGo - App Store Listing
 > ⚠️ **直接对照本文件填写 App Store Connect，无需查阅其他文档。**
 >
-> 生成时间: 2026-05-08 | 内购类型: 自动续期订阅 $1.99/月 (7天试用) | 最后更新: 2026-06-24
+> 生成时间: 2026-05-08 | 内购类型: 自动续期订阅 $0.99/月 (7天试用) | 最后更新: 2026-06-26 (per 佛老爷 10:11 拍板修正 bug)
 
 ---
 
@@ -54,7 +54,7 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 - Dark & light themes
 - Favorites & history
 
-**Premium ($1.99/month with 7-day free trial):**
+**Premium ($0.99/month with 7-day free trial):**
 - All 72+ sessions
 - Achievements & badges
 - Voice guidance
@@ -62,7 +62,7 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 - iCloud sync
 - Advanced statistics
 
-Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $1.99/month.
+Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $0.99/month.
 ```
 
 > 字符数: ~900（限制 4000）
