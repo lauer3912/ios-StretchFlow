@@ -115,6 +115,7 @@ struct LibraryView: View {
                         SessionGridCard(session: session)
                     }
                     .buttonStyle(PlainButtonStyle())
+                    .accessibilityIdentifier("session_card")
                 }
             }
         }

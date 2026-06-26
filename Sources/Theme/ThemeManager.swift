@@ -8,7 +8,12 @@ class ThemeManager: ObservableObject {
     }
 
     init() {
-        self.isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        // Honor launch arg for screenshot tests (XCUITest ScreenshotTests pass -forceDarkMode)
+        if CommandLine.arguments.contains("-forceDarkMode") {
+            self.isDarkMode = true
+        } else {
+            self.isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        }
     }
 }
 

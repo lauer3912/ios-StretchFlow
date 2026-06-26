@@ -7,7 +7,7 @@ final class ScreenshotTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments = ["--uitesting"]
+        app.launchArguments = ["--uitesting", "-forceDarkMode"]
         app.launch()
         Thread.sleep(forTimeInterval: 3.0)  // Wait for app to fully stabilize
     }
@@ -94,12 +94,20 @@ final class ScreenshotTests: XCTestCase {
         // Navigate to Library first
         tapTab(label: "Library")
         Thread.sleep(forTimeInterval: 1.0)
-        
-        // Tap first session card
-        if app.collectionViews.children(matching: .cell).firstMatch.exists {
-            app.collectionViews.children(matching: .cell).firstMatch.tap()
-            Thread.sleep(forTimeInterval: 2.0)
+
+        // Tap the first session card (accessibilityIdentifier="session_card")
+        let firstCard = app.descendants(matching: .any).matching(identifier: "session_card").firstMatch
+        if firstCard.waitForExistence(timeout: 3) {
+            firstCard.tap()
+        } else {
+            // Fallback: coordinate-based tap on first card
+            let win = app.windows.firstMatch
+            let coord = win.coordinate(withNormalizedOffset: .zero)
+                .withOffset(CGVector(dx: win.frame.width * 0.25, dy: win.frame.height * 0.24))
+            coord.tap()
         }
+        Thread.sleep(forTimeInterval: 3.0)
+
         capture("iPhone_69_portrait_03_SessionDetail")
     }
 
@@ -127,11 +135,18 @@ final class ScreenshotTests: XCTestCase {
     func testiPad_13_03_SessionDetail() {
         tapTab(label: "Library")
         Thread.sleep(forTimeInterval: 1.0)
-        
-        if app.collectionViews.children(matching: .cell).firstMatch.exists {
-            app.collectionViews.children(matching: .cell).firstMatch.tap()
-            Thread.sleep(forTimeInterval: 2.0)
+
+        let firstCard = app.descendants(matching: .any).matching(identifier: "session_card").firstMatch
+        if firstCard.waitForExistence(timeout: 3) {
+            firstCard.tap()
+        } else {
+            let win = app.windows.firstMatch
+            let coord = win.coordinate(withNormalizedOffset: .zero)
+                .withOffset(CGVector(dx: win.frame.width * 0.125, dy: win.frame.height * 0.32))
+            coord.tap()
         }
+        Thread.sleep(forTimeInterval: 3.0)
+
         capture("iPad_13_portrait_03_SessionDetail")
     }
 
