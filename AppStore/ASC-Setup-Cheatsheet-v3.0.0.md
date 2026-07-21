@@ -30,7 +30,7 @@
 | Primary Language | English |
 | Copyright | `2026 lauer3912` |
 | Team ID | `9L6N2ZF26B` |
-| Apple ID | `lauer3912@techidaily.com` (2FA) |
+| Apple ID | `support@techidaily.com` (2FA) |
 | **Subscription Group Reference Name** | `StretchGoGo Pro` |
 | **Product ID** | `stretchgogo_pro_monthly` |
 | **Product Price** | **$1.99 USD/month** (per 06-24 10:19 Q2 拍板) |
@@ -42,7 +42,7 @@
 
 ### Step 1: 创建 App (如未建) — 1-2 min (skip 如已建)
 
-1. 浏览器开 `appstoreconnect.apple.com` → 登录 `lauer3912@techidaily.com`
+1. 浏览器开 `appstoreconnect.apple.com` → 登录 `support@techidaily.com`
 2. 左栏 **My Apps** → 点 **+** → **New App**
 3. 填:
    - Platform: iOS
