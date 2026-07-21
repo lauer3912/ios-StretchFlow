@@ -69,6 +69,36 @@ Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $4.99/
 
 ---
 
+## What's New in this Version (App Store Connect → Version → What's New)
+
+```
+What's New in Version 3.1.0
+
+Apple Health Integration
+• Track your daily stretching sessions as Mindful Minutes in Apple Health
+• View your complete stretching history alongside meditation and other mindful activities in the Health app
+
+Daily Streak Reminders
+• New opt-in daily notification (default 9:00 AM) to help you build a consistent stretching habit
+• Customize the reminder time to fit your schedule in Settings
+
+Live Activity on Lock Screen & Dynamic Island
+• Track your current stretch and exercise progress without keeping the app open
+• Supported on iPhone 14 Pro and later with Dynamic Island
+
+Yearly Subscription Option
+• New yearly plan at $49.99/year (save 17% vs monthly) for committed stretchers
+• Both monthly and yearly plans include a 7-day free trial
+
+iPad Native Experience
+• Refreshed iPad interface with full-screen layouts and an inline tab bar
+• Feels right at home on iPad Pro
+
+We can't wait for you to try StretchGoGo 3.1.0. As always, please reach out at support@techidaily.com with feedback.
+```
+
+---
+
 ## 4. 关键词（App Store Connect → App Store 信息）
 
 ```
