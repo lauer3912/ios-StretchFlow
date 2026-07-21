@@ -1,0 +1,52 @@
+import SwiftUI
+
+struct ContentView: View {
+    @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var dataManager: DataManager
+
+    // Launch arg support: -initialTab 0/1/2/3 (Home/Library/Stats/Profile)
+    // 用于 simctl 自动化截屏 (iPad 无 tap API)
+    @State private var selectedTab: Int = {
+        let args = ProcessInfo.processInfo.arguments
+        if let i = args.firstIndex(of: "-initialTab"),
+           i + 1 < args.count,
+           let tab = Int(args[i + 1]),
+           (0...3).contains(tab) {
+            return tab
+        }
+        return 0
+    }()
+
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
+                .accessibilityIdentifier("tab_home")
+
+            LibraryView()
+                .tabItem {
+                    Label("Library", systemImage: "square.grid.2x2.fill")
+                }
+                .tag(1)
+                .accessibilityIdentifier("tab_library")
+
+            StatisticsView()
+                .tabItem {
+                    Label("Stats", systemImage: "chart.bar.fill")
+                }
+                .tag(2)
+                .accessibilityIdentifier("tab_stats")
+
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.fill")
+                }
+                .tag(3)
+                .accessibilityIdentifier("tab_profile")
+        }
+        .tint(AppColors.lightPrimary)
+    }
+}

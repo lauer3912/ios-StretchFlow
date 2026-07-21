@@ -18,12 +18,15 @@ struct ContentView: View {
         return 0
     }()
 
-    private var isPad: Bool { horizontalSizeClass == .regular }
-    private let tabNames = ["Home", "Library", "Stats", "Profile"]
-    private let tabIcons = ["house.fill", "square.grid.2x2.fill", "chart.bar.fill", "person.fill"]
+    private let tabs: [(name: String, icon: String)] = [
+        ("Home", "house.fill"),
+        ("Library", "square.grid.2x2.fill"),
+        ("Stats", "chart.bar.fill"),
+        ("Profile", "person.fill"),
+    ]
 
     @ViewBuilder
-    private var currentView: some View {
+    private var detailContent: some View {
         switch selectedTab {
         case 0: HomeView()
         case 1: LibraryView()
@@ -34,41 +37,23 @@ struct ContentView: View {
     }
 
     var body: some View {
-        if isPad {
-            // iPad: 内容占满全屏 + 顶部 inline tab bar (无 sidebar)
-            VStack(spacing: 0) {
-                // 顶部 tab 栏
-                HStack(spacing: 0) {
-                    ForEach(0..<4, id: \.self) { idx in
-                        Button {
-                            selectedTab = idx
-                        } label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: tabIcons[idx])
-                                    .font(.subheadline)
-                                Text(tabNames[idx])
-                                    .font(.caption2)
-                            }
-                            .foregroundColor(selectedTab == idx ? AppColors.lightPrimary : Color.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
-                        }
-                        .overlay(
-                            Rectangle()
-                                .fill(selectedTab == idx ? AppColors.lightPrimary : Color.clear)
-                                .frame(height: 2),
-                            alignment: .bottom
-                        )
-                    }
+        if horizontalSizeClass == .regular {
+            // iPad: NavigationView (iOS 15 兼容) — sidebar + detail
+            // 修 Apple Guideline 4.0 Design + 2.4.5 iPad-native UI
+            NavigationView {
+                List(0..<tabs.count, id: \.self, selection: $selectedTab) { idx in
+                    Label(tabs[idx].name, systemImage: tabs[idx].icon)
+                        .tag(idx)
+                        .accessibilityIdentifier("ipad_tab_\(tabs[idx].name.lowercased())")
                 }
-                .background(.ultraThinMaterial)
+                .navigationTitle("StretchGoGo")
 
-                // 内容占满剩余空间
-                currentView
+                detailContent
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .navigationViewStyle(.doubleColumn)
         } else {
-            // iPhone: TabView (底部 4 tab)
+            // iPhone: TabView (4 tabs bottom)
             TabView(selection: $selectedTab) {
                 HomeView()
                     .tabItem { Label("Home", systemImage: "house.fill") }

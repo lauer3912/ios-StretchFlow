@@ -3,6 +3,8 @@ import SwiftUI
 struct LibraryView: View {
     @EnvironmentObject var dataManager: DataManager
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isPad: Bool { horizontalSizeClass == .regular }
     @EnvironmentObject var premiumManager: PremiumManager
     @State private var selectedBodyPart: StretchSession.BodyPart?
     @State private var searchText = ""
@@ -31,15 +33,15 @@ struct LibraryView: View {
     }
 
     var body: some View {
-        NavigationView {
+        if isPad {
             ScrollView {
                 VStack(spacing: 20) {
                     // Body Part Filter
                     bodyPartPicker
-
+    
                     // Difficulty Filter
                     difficultyPicker
-
+    
                     // Sessions Grid
                     sessionsGrid
                 }
@@ -47,11 +49,29 @@ struct LibraryView: View {
                 .padding(.top, 16)
             }
             .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
-            .navigationTitle("Library")
-            .navigationBarTitleDisplayMode(.large)
-            .searchable(text: $searchText, prompt: "Search sessions")
-            .sheet(isPresented: $showPaywall) {
-                PremiumPaywallView()
+        } else {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        // Body Part Filter
+                        bodyPartPicker
+    
+                        // Difficulty Filter
+                        difficultyPicker
+    
+                        // Sessions Grid
+                        sessionsGrid
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                }
+                .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
+                .navigationTitle("Library")
+                .navigationBarTitleDisplayMode(.large)
+                .searchable(text: $searchText, prompt: "Search sessions")
+                .sheet(isPresented: $showPaywall) {
+                    PremiumPaywallView()
+                }
             }
         }
     }
@@ -126,6 +146,7 @@ struct LockedSessionCard: View {
     let session: StretchSession
     let onTap: () -> Void
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         Button(action: onTap) {
@@ -184,6 +205,7 @@ struct FilterChip: View {
     let isSelected: Bool
     let action: () -> Void
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         Button(action: action) {
@@ -213,6 +235,7 @@ struct FilterChip: View {
 struct SessionGridCard: View {
     let session: StretchSession
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

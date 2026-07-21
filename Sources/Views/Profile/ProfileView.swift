@@ -3,11 +3,19 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var dataManager: DataManager
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isPad: Bool { horizontalSizeClass == .regular }
     @EnvironmentObject var premiumManager: PremiumManager
     @State private var showPaywall = false
 
+    // Per 07-02 14:13 佛老爷 拍板 (新增 launch arg 供 sim 截图自动化)
+    // 07-01 7-01 实战 ReverseWorldGo saved 模式: `-autoPaywall` auto-show paywall
+    private let autoPaywall: Bool = {
+        CommandLine.arguments.contains("-autoPaywall")
+    }()
+
     var body: some View {
-        NavigationView {
+        if isPad {
             ScrollView {
                 VStack(spacing: 24) {
                     // Premium Status
@@ -26,10 +34,40 @@ struct ProfileView: View {
                 .padding(.top, 16)
             }
             .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showPaywall) {
                 PremiumPaywallView()
+            }
+            .onAppear {
+                if autoPaywall { showPaywall = true }
+            }
+        } else {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Premium Status
+                        premiumSection
+    
+                        // User Stats
+                        userStatsSection
+    
+                        // Settings
+                        settingsSection
+    
+                        // About
+                        aboutSection
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                }
+                .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
+                .navigationTitle("Profile")
+                .navigationBarTitleDisplayMode(.large)
+                .sheet(isPresented: $showPaywall) {
+                    PremiumPaywallView()
+                }
+                .onAppear {
+                    if autoPaywall { showPaywall = true }
+                }
             }
         }
     }
@@ -325,6 +363,7 @@ struct PremiumSettingsToggleRow: View {
     let isLocked: Bool
     let onTap: () -> Void
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         HStack(spacing: 16) {
@@ -371,6 +410,7 @@ struct SettingsToggleRow: View {
     let icon: String
     @Binding var isOn: Bool
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         HStack(spacing: 16) {
@@ -399,6 +439,7 @@ struct SettingsLinkRow: View {
     let icon: String
     let action: () -> Void
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         Button(action: action) {

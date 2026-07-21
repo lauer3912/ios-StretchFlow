@@ -1,22 +1,25 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isPad: Bool { horizontalSizeClass == .regular }
+
     @EnvironmentObject var dataManager: DataManager
     @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
-        NavigationView {
+        if isPad {
             ScrollView {
                 VStack(spacing: 24) {
                     // Overview Cards
                     overviewSection
-
+    
                     // Calendar Heatmap
                     calendarSection
-
+    
                     // Weekly Progress
                     weeklySection
-
+    
                     // Achievements
                     achievementsSection
                 }
@@ -24,8 +27,29 @@ struct StatisticsView: View {
                 .padding(.top, 16)
             }
             .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
-            .navigationTitle("Statistics")
-            .navigationBarTitleDisplayMode(.large)
+        } else {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Overview Cards
+                        overviewSection
+    
+                        // Calendar Heatmap
+                        calendarSection
+    
+                        // Weekly Progress
+                        weeklySection
+    
+                        // Achievements
+                        achievementsSection
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                }
+                .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
+                .navigationTitle("Statistics")
+                .navigationBarTitleDisplayMode(.large)
+            }
         }
     }
 

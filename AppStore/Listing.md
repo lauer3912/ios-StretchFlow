@@ -1,7 +1,7 @@
 # StretchGoGo - App Store Listing
 > ⚠️ **直接对照本文件填写 App Store Connect，无需查阅其他文档。**
 >
-> 生成时间: 2026-05-08 | 内购类型: 自动续期订阅 $0.99/月 (7天试用) | 最后更新: 2026-06-26 (per 佛老爷 10:11 拍板修正 bug)
+> 生成时间: 2026-05-08 | 订阅类型: 自动续期订阅 (Auto-Renewable) $4.99/月, $49.99/年 (7天试用) | 最后更新: 2026-06-26 (per 佛老爷 10:11 拍板修正 bug)
 
 ---
 
@@ -22,7 +22,7 @@
 ## 2. 促销文本（App Store Connect → App Store 信息）
 
 ```
-StretchGoGo -- Your daily stretch companion. $0.99/month. Try today.
+StretchGoGo -- Your daily stretch companion. Auto-Renewable Subscription $4.99/month or $49.99/year. Try today.
 ```
 
 > 字符数: 67（限制 100）
@@ -54,7 +54,7 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 - Dark & light themes
 - Favorites & history
 
-**Premium ($0.99/month with 7-day free trial):**
+**Premium (Auto-Renewable Subscription: $4.99/month or $49.99/year, 7-day free trial):**
 - All 72+ sessions
 - Achievements & badges
 - Voice guidance
@@ -62,7 +62,7 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 - iCloud sync
 - Advanced statistics
 
-Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $0.99/month.
+Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $4.99/month (or $49.99/year). Auto-renews until cancelled.
 ```
 
 > 字符数: ~900（限制 4000）
@@ -121,7 +121,7 @@ stretch, flexibility, daily stretch, back pain, posture, office stretch, stretch
 | 联系信息 | 否 | 不收集联系信息 |
 | 标识符 | 否 | 不使用广告标识符 |
 | 浏览历史与搜索 | 否 | App 不收集浏览数据 |
-| **购买行为** | **是** | **包含内购订阅功能** |
+| **购买行为** | **是** | **包含订阅功能 (Auto-Renewable Subscription)** |
 | 崩溃日志 | 否 | 未集成崩溃统计 SDK |
 | 性能数据 | 否 | 未集成分析 SDK |
 | 广告 | 否 | 不使用广告 |
@@ -133,12 +133,12 @@ stretch, flexibility, daily stretch, back pain, posture, office stretch, stretch
 
 | 字段 | 值 |
 |------|---|
-| 价格 | **Free**（内购变现：$0.99/月 Premium）|
+| 价格 | **Free**（订阅变现：$4.99/月 或 $49.99/年 Premium, Auto-Renewable）|
 | 可用性 | 全部地区 |
 
 ---
 
-## 9. 内购（App Store Connect → 内购）
+## 9. 订阅 (App Store Connect → 订阅 / Subscription)
 
 ### 9.1 协议准备（先完成才能提交）
 
@@ -148,19 +148,19 @@ stretch, flexibility, daily stretch, back pain, posture, office stretch, stretch
 | 填写银行信息 | ⬜ 未填写 | 收款账户，验证可能需要1-2天 |
 | 填写税务信息 | ⬜ 未填写 | 美国 W-9 或 W-8BEN 表单 |
 
-### 9.2 自动续期订阅
+### 9.2 自动续期订阅 (Auto-Renewable Subscription)
 
 | 订阅组 | 产品 ID | 价格 | 时长 |
 |--------|---------|------|------|
-| PremiumGroup | com.ggsheng.StretchGoGo.PremiumMonthly | Tier 1 ($0.99) | 1 Month |
+| PremiumGroup | com.ggsheng.StretchGoGo.PremiumMonthly | Tier 2 ($4.99) | 1 Month |
 
 > 无免费试用，用户订阅后立即收费
 
-### 9.3 内购审核截图
+### 9.3 订阅审核截图 (per Apple 3.1.2(a) 必)
 
 | 产品 | 截图要求 | 文件位置 |
 |------|---------|---------|
-| Premium Monthly | 显示订阅墙界面（价格 $0.99/月、功能列表、订阅按钮） | `AppStore/Screenshots/InAppPurchase/` |
+| Premium Monthly | 显示订阅墙界面（价格 $4.99/月 或 $49.99/年、功能列表、订阅按钮、Auto-Renewable 标识、取消指引） | `AppStore/Screenshots/InAppPurchase/` |
 
 ---
 
@@ -182,7 +182,7 @@ stretch, flexibility, daily stretch, back pain, posture, office stretch, stretch
 |------|---|
 | 是否需要登录 | **否** |
 | Demo 数据说明 | 不需要（Free 用户可直接使用基础功能）|
-| 备注 | StretchGoGo is a stretching companion app with in-app purchase. Premium subscription ($0.99/month) unlocks all 72+ sessions, achievements, voice guidance, daily reminders, iCloud sync, and advanced statistics. No login required. |
+| 备注 | StretchGoGo is a stretching companion app with in-app purchase. Premium subscription (Auto-Renewable, $4.99/month or $49.99/year) unlocks all 72+ sessions, achievements, voice guidance, daily reminders, iCloud sync, and advanced statistics. No login required. |
 
 ### 10.3 广告标识符
 
@@ -223,13 +223,13 @@ App 不含任何医疗设备功能。StretchGoGo 是一款健身/生活方式（
 
 | 检查项 | 状态 | 说明 |
 |--------|------|------|
-| 协议 + 银行 + 税务 全部生效 | ⬜ | 才能提交内购 App |
+| 协议 + 银行 + 税务 全部生效 | ⬜ | 才能提交订阅 App |
 | Bundle ID 在 Xcode 中与 App Store Connect 一致 | ✅ | com.ggsheng.StretchGoGo |
-| 内购产品状态为"准备提交" | ⬜ | 需在 App Store Connect 确认 |
+| 订阅产品状态为"准备提交" | ⬜ | 需在 App Store Connect 确认 |
 | App 隐私配置（购买行为=是）| ⬜ | 需在 App Store Connect 配置 |
 | 隐私政策 URL 可访问 | ✅ | https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html |
 | 截图尺寸正确（1290×2796 / 1179×2556）| ⬜ | 需准备真机截图 |
-| 内购审核截图已上传 | ⬜ | 显示订阅墙界面 |
+| 订阅审核截图已上传 | ⬜ | 显示订阅墙界面 |
 | 版本号与 project.yml 一致 | ✅ | 1.0.0 |
 | 出口合规 = 否 | ✅ | ITSAppUsesNonExemptEncryption = NO |
 

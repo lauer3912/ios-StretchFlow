@@ -4,29 +4,31 @@ struct HomeView: View {
     @EnvironmentObject var dataManager: DataManager
     @EnvironmentObject var themeManager: ThemeManager
     @EnvironmentObject var premiumManager: PremiumManager
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    private var isPad: Bool { horizontalSizeClass == .regular }
     @State private var showingSessionPlayer = false
     @State private var selectedSession: StretchSession?
     @State private var showingPaywall = false
 
     var body: some View {
-        NavigationView {
+        if isPad {
             ScrollView {
                 VStack(spacing: 24) {
                     // Header with streak
                     headerSection
-
+    
                     // Quick Start Section
                     quickStartSection
-
+    
                     // Today's Recommended
                     recommendedSection
-
+    
                     // Pro Pick Banner (per 06-24 11:50 B 方案, 转化漏斗)
                     // 只对非 Premium 用户显示 (per 佛老爷 10:43 拍板)
                     if !premiumManager.isPremiumActive {
                         proPickBannerSection
                     }
-
+    
                     // Recent Sessions
                     recentSection
                 }
@@ -34,28 +36,55 @@ struct HomeView: View {
                 .padding(.top, 16)
             }
             .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
-            .navigationTitle("StretchGoGo")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    premiumToolbarButton
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        themeManager.isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: themeManager.isDarkMode ? "sun.max.fill" : "moon.fill")
-                            .foregroundColor(AppColors.lightPrimary)
+        } else {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Header with streak
+                        headerSection
+    
+                        // Quick Start Section
+                        quickStartSection
+    
+                        // Today's Recommended
+                        recommendedSection
+    
+                        // Pro Pick Banner (per 06-24 11:50 B 方案, 转化漏斗)
+                        // 只对非 Premium 用户显示 (per 佛老爷 10:43 拍板)
+                        if !premiumManager.isPremiumActive {
+                            proPickBannerSection
+                        }
+    
+                        // Recent Sessions
+                        recentSection
                     }
-                    .accessibilityLabel(themeManager.isDarkMode ? "Switch to light mode" : "Switch to dark mode")
-                    .accessibilityHint("Double tap to toggle dark mode")
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
                 }
-            }
-            .sheet(isPresented: $showingPaywall) {
-                PremiumPaywallView()
-            }
-            .fullScreenCover(item: $selectedSession) { session in
-                SessionPlayerView(session: session)
+                .background(themeManager.isDarkMode ? AppColors.darkBackground : AppColors.lightBackground)
+                .navigationTitle("StretchGoGo")
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        premiumToolbarButton
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            themeManager.isDarkMode.toggle()
+                        } label: {
+                            Image(systemName: themeManager.isDarkMode ? "sun.max.fill" : "moon.fill")
+                                .foregroundColor(AppColors.lightPrimary)
+                        }
+                        .accessibilityLabel(themeManager.isDarkMode ? "Switch to light mode" : "Switch to dark mode")
+                        .accessibilityHint("Double tap to toggle dark mode")
+                    }
+                }
+                .sheet(isPresented: $showingPaywall) {
+                    PremiumPaywallView()
+                }
+                .fullScreenCover(item: $selectedSession) { session in
+                    SessionPlayerView(session: session)
+                }
             }
         }
     }
