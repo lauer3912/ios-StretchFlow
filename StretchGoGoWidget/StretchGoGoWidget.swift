@@ -1,110 +1,89 @@
-import WidgetKit
+import ActivityKit
 import SwiftUI
+import WidgetKit
 
-struct StretchGoGoWidgetEntry: TimelineEntry {
-    let date: Date
-    let streak: Int
-    let todayMinutes: Int
-    let completed: Bool
-}
+// MARK: - Live Activity Widget (iOS 16.1+)
 
-struct StretchGoGoWidgetProvider: TimelineProvider {
-    func placeholder(in context: Context) -> StretchGoGoWidgetEntry {
-        StretchGoGoWidgetEntry(date: Date(), streak: 7, todayMinutes: 15, completed: false)
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (StretchGoGoWidgetEntry) -> Void) {
-        let entry = StretchGoGoWidgetEntry(date: Date(), streak: 7, todayMinutes: 15, completed: false)
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<StretchGoGoWidgetEntry>) -> Void) {
-        let sharedDefaults = UserDefaults(suiteName: "group.com.ggsheng.StretchGoGo") ?? UserDefaults.standard
-        let entry = StretchGoGoWidgetEntry(date: Date(), streak: sharedDefaults.integer(forKey: "streak"), todayMinutes: sharedDefaults.integer(forKey: "todayMinutes"), completed: sharedDefaults.bool(forKey: "todayCompleted"))
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
-    }
-}
-
-struct StretchGoGoWidgetEntryView: View {
-    var entry: StretchGoGoWidgetProvider.Entry
-    @Environment(\.widgetFamily) var family
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: "figure.stretch")
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "5B4CD4"))
-                Text("StretchGoGo")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+@available(iOS 16.1, *)
+struct StretchLiveActivityWidget: Widget {
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: StretchActivityAttributes.self) { context in
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Image(systemName: "figure.flexibility")
+                        .foregroundColor(.green)
+                    Text(context.attributes.sessionTitle)
+                        .font(.headline)
+                    Spacer()
+                    Text("\(context.state.exerciseIndex)/\(context.state.totalExercises)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Text(context.state.exerciseName)
+                    .font(.subheadline)
+                if context.state.isPaused {
+                    Label("Paused", systemImage: "pause.circle.fill")
+                        .foregroundColor(.orange)
+                } else {
+                    Label("In progress", systemImage: "play.circle.fill")
+                        .foregroundColor(.green)
+                }
             }
-
-            Spacer()
-
-            if entry.completed {
-                Label("Done!", systemImage: "checkmark.circle.fill")
-                    .font(.title3)
-                    .foregroundColor(Color(hex: "6EE7B7"))
-            } else {
-                Text("\(entry.todayMinutes) min")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text("Start your stretch!")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            .padding()
+            .activityBackgroundTint(.green.opacity(0.1))
+        } dynamicIsland: { context in
+            DynamicIsland {
+                DynamicIslandExpandedRegion(.leading) {
+                    Image(systemName: "figure.flexibility")
+                        .foregroundColor(.green)
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    Text("\(context.state.exerciseIndex)/\(context.state.totalExercises)")
+                        .font(.caption.monospacedDigit())
+                }
+                DynamicIslandExpandedRegion(.center) {
+                    Text(context.state.exerciseName)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
+                }
+                DynamicIslandExpandedRegion(.bottom) {
+                    HStack {
+                        if context.state.isPaused {
+                            Label("Paused", systemImage: "pause.fill")
+                                .foregroundColor(.orange)
+                        } else {
+                            Label("Active", systemImage: "play.fill")
+                                .foregroundColor(.green)
+                        }
+                        Spacer()
+                        Text(context.attributes.sessionTitle)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            } compactLeading: {
+                Image(systemName: "figure.flexibility")
+                    .foregroundColor(.green)
+            } compactTrailing: {
+                Text("\(context.state.exerciseIndex)/\(context.state.totalExercises)")
+                    .font(.caption.monospacedDigit())
+            } minimal: {
+                Image(systemName: "figure.flexibility")
+                    .foregroundColor(.green)
             }
-
-            Spacer()
-
-            HStack {
-                Image(systemName: "flame.fill")
-                    .foregroundColor(.orange)
-                Text("\(entry.streak) day streak")
-                    .font(.caption)
-            }
-        }
-        .padding()
-        if #available(iOS 17.0, *) {
-            self.containerBackground(.fill.tertiary, for: .widget)
-        } else {
-            self.background(Color(UIColor.systemBackground))
+            .widgetURL(URL(string: "stretchgogo://session/\(context.attributes.sessionId)"))
+            .keylineTint(.green)
         }
     }
 }
 
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 6: (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default: (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
-    }
-}
+// MARK: - Main Widget Bundle
 
 @main
-struct StretchGoGoWidget: Widget {
-    let kind: String = "StretchGoGoWidget"
-
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: StretchGoGoWidgetProvider()) { entry in
-            StretchGoGoWidgetEntryView(entry: entry)
+struct StretchGoGoWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        if #available(iOS 16.1, *) {
+            StretchLiveActivityWidget()
         }
-        .configurationDisplayName("StretchGoGo")
-        .description("Track your daily stretching streak.")
-        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

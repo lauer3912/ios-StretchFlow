@@ -2,7 +2,7 @@ name: StretchGoGo
 options:
   bundleIdPrefix: com.ggsheng
   deploymentTarget:
-    iOS: "15.0"
+    iOS: "16.2"
   xcodeVersion: "15.0"
   createIntermediateGroups: true
 
@@ -55,6 +55,9 @@ targets:
       - path: StretchGoGoWidget
         excludes:
           - "**/.DS_Store"
+      - path: Sources/Services/StretchActivityAttributes.swift
+      - path: Sources/Services/HealthKitManager.swift
+      - path: Sources/Services/ReminderManager.swift
     settings:
       base:
         INFOPLIST_FILE: StretchGoGoWidget/Info.plist

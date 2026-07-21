@@ -1,4 +1,5 @@
 import SwiftUI
+import ActivityKit
 
 struct SessionPlayerView: View {
     let session: StretchSession
@@ -12,6 +13,7 @@ struct SessionPlayerView: View {
     @State private var isRestPeriod = false
     @State private var showingCompletion = false
     @State private var timer: Timer?
+    @State private var liveActivityId: String? = nil
 
     init(session: StretchSession) {
         self.session = session

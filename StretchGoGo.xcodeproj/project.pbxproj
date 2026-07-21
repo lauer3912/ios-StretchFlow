@@ -13,6 +13,7 @@
 		21F824A577A0E1FCB64DA36F /* ContentView.swift.bak2 in Resources */ = {isa = PBXBuildFile; fileRef = ACB0616F62FA25BC57FD09B4 /* ContentView.swift.bak2 */; };
 		2D27239274D789EC1683444B /* StretchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A219F8F88B8195209C40A9 /* StretchSession.swift */; };
 		2DD0D8591D7370D33993AFC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FA7EB562053DC1EE23F255 /* ContentView.swift */; };
+		2F6A849EB4FD58E3EFF51D25 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */; };
 		36038E11A5C62ADFF12286B9 /* PremiumManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D00B8BD32A7A92FB103C0B /* PremiumManagerTests.swift */; };
 		361E7CFB85D6CD73E2E7AB94 /* ProfileVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9129743DFD64CEE9BF747B61 /* ProfileVersionTests.swift */; };
 		51309B1715F0443AD7B1ABDB /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1277C50ADF8CCA5D61FDE07 /* ModelTests.swift */; };
@@ -29,11 +30,14 @@
 		98F4D6F11D594A0606EED1FE /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C165E36DD9BEC64DF92E6 /* DataManagerTests.swift */; };
 		9953187E2BA30559124FD005 /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854B8A09C5FAEA023B907623 /* SessionData.swift */; };
 		99F2044BDFF8C394063CDDF8 /* SessionPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C7BCDE555B03A441B2891 /* SessionPlayerView.swift */; };
+		9A349FFF2A8E955BA9164324 /* StretchActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28701E5B7DD873CE0EC15A58 /* StretchActivityAttributes.swift */; };
 		A5546705ADA899834E19726D /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0BA2558A9BD587C263964 /* StatisticsView.swift */; };
 		A62582F0413FE22FCD7D6FAD /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5170A440E9AF8C5D236058 /* SessionDetailView.swift */; };
+		AB6337F9D7532F2AB312E6D5 /* StretchActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28701E5B7DD873CE0EC15A58 /* StretchActivityAttributes.swift */; };
 		BED6E913AE06AF1A99558997 /* StretchGoGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B00C0949CE1E4FD60C4C9E /* StretchGoGoApp.swift */; };
 		C10C3BD7ADC0FA243E662D55 /* PremiumPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE0F873097E4724928A3731 /* PremiumPaywallView.swift */; };
 		C7FD2E1C8F5A18F7F88C1CC6 /* StretchGoGoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A4AE398C213637E98C672A /* StretchGoGoWidget.swift */; };
+		DBE8324C06738AFD2CE2DF69 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC42F519DEBBAAFBE59CCE53 /* ReminderManager.swift */; };
 		E4635FFA313078918B6900A7 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E07B502BCF9CE1A097BFCF2 /* ScreenshotTests.swift */; };
 		FB025E7D3AC695EF8B882697 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922514A6B4FC0E946A159EAD /* DataManager.swift */; };
 		FB54B4A872A96A2E00E3A124 /* ContentView.swift.bak3 in Resources */ = {isa = PBXBuildFile; fileRef = 735F3869DAF2919780BD132F /* ContentView.swift.bak3 */; };
@@ -58,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		22DA7F015FB5949AF5B5C304 /* StretchGoGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StretchGoGoWidget.entitlements; sourceTree = "<group>"; };
+		28701E5B7DD873CE0EC15A58 /* StretchActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchActivityAttributes.swift; sourceTree = "<group>"; };
 		2B27D996A443F157BEBB01E8 /* UserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgress.swift; sourceTree = "<group>"; };
 		2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		366AE9413910540EEC19F87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -250,6 +255,7 @@
 				2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */,
 				FC42F519DEBBAAFBE59CCE53 /* ReminderManager.swift */,
 				854B8A09C5FAEA023B907623 /* SessionData.swift */,
+				28701E5B7DD873CE0EC15A58 /* StretchActivityAttributes.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				A62582F0413FE22FCD7D6FAD /* SessionDetailView.swift in Sources */,
 				99F2044BDFF8C394063CDDF8 /* SessionPlayerView.swift in Sources */,
 				A5546705ADA899834E19726D /* StatisticsView.swift in Sources */,
+				AB6337F9D7532F2AB312E6D5 /* StretchActivityAttributes.swift in Sources */,
 				BED6E913AE06AF1A99558997 /* StretchGoGoApp.swift in Sources */,
 				2D27239274D789EC1683444B /* StretchSession.swift in Sources */,
 				86371C5E46B5B8EA680FE80E /* ThemeManager.swift in Sources */,
@@ -451,6 +458,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6A849EB4FD58E3EFF51D25 /* HealthKitManager.swift in Sources */,
+				DBE8324C06738AFD2CE2DF69 /* ReminderManager.swift in Sources */,
+				9A349FFF2A8E955BA9164324 /* StretchActivityAttributes.swift in Sources */,
 				C7FD2E1C8F5A18F7F88C1CC6 /* StretchGoGoWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 3.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -647,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 3.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
