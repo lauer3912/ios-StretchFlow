@@ -18,9 +18,11 @@
 		51309B1715F0443AD7B1ABDB /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1277C50ADF8CCA5D61FDE07 /* ModelTests.swift */; };
 		56A3D5276E4751073EA1C6F9 /* ThemeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D333A0FF2F7B9468BC99E8CA /* ThemeManagerTests.swift */; };
 		599242A76BB01B7BDC8381DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D070255AB664302A07133798 /* Assets.xcassets */; };
+		6080688757C57ACB64962313 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC42F519DEBBAAFBE59CCE53 /* ReminderManager.swift */; };
 		648E18797FAC041261B1C620 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9CE665EBEA480C34A95FC /* ProfileView.swift */; };
 		652DD2E415D3D7903349D4D1 /* ContentView.swift.bak in Resources */ = {isa = PBXBuildFile; fileRef = BE73963528FBDD8DB4966999 /* ContentView.swift.bak */; };
 		65A084EA537941D1EE43995A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563E95617E13A76F9118D0A /* HomeView.swift */; };
+		768AE512088BD133F00B3C39 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */; };
 		7E07C0CE5B44DBF5C4B5802F /* ContentView.swift.bak4 in Resources */ = {isa = PBXBuildFile; fileRef = 792C193FE5270B237E9D3161 /* ContentView.swift.bak4 */; };
 		86371C5E46B5B8EA680FE80E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADAAF56AE8EECFD6331542A /* ThemeManager.swift */; };
 		9626324AB827153032915C0D /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7ACCEA643479CC3A7FF722 /* LibraryView.swift */; };
@@ -57,6 +59,7 @@
 /* Begin PBXFileReference section */
 		22DA7F015FB5949AF5B5C304 /* StretchGoGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StretchGoGoWidget.entitlements; sourceTree = "<group>"; };
 		2B27D996A443F157BEBB01E8 /* UserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgress.swift; sourceTree = "<group>"; };
+		2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		366AE9413910540EEC19F87A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3F5CDA6BDA3781B03AA33F46 /* StretchGoGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchGoGoTests.swift; sourceTree = "<group>"; };
 		4415A7FB50DDC3563C065018 /* StretchGoGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StretchGoGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +96,7 @@
 		E563E95617E13A76F9118D0A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EC7ACCEA643479CC3A7FF722 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		ED1C165E36DD9BEC64DF92E6 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		FC42F519DEBBAAFBE59CCE53 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -243,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				922514A6B4FC0E946A159EAD /* DataManager.swift */,
+				2D8D8B09343B3BB848E5C1F4 /* HealthKitManager.swift */,
+				FC42F519DEBBAAFBE59CCE53 /* ReminderManager.swift */,
 				854B8A09C5FAEA023B907623 /* SessionData.swift */,
 			);
 			path = Services;
@@ -414,11 +420,13 @@
 			files = (
 				2DD0D8591D7370D33993AFC8 /* ContentView.swift in Sources */,
 				FB025E7D3AC695EF8B882697 /* DataManager.swift in Sources */,
+				768AE512088BD133F00B3C39 /* HealthKitManager.swift in Sources */,
 				65A084EA537941D1EE43995A /* HomeView.swift in Sources */,
 				9626324AB827153032915C0D /* LibraryView.swift in Sources */,
 				09453346188C3316238060A1 /* PremiumManager.swift in Sources */,
 				C10C3BD7ADC0FA243E662D55 /* PremiumPaywallView.swift in Sources */,
 				648E18797FAC041261B1C620 /* ProfileView.swift in Sources */,
+				6080688757C57ACB64962313 /* ReminderManager.swift in Sources */,
 				9953187E2BA30559124FD005 /* SessionData.swift in Sources */,
 				A62582F0413FE22FCD7D6FAD /* SessionDetailView.swift in Sources */,
 				99F2044BDFF8C394063CDDF8 /* SessionPlayerView.swift in Sources */,
@@ -556,7 +564,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -572,7 +580,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -618,7 +626,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				ENABLE_PREVIEWS = YES;
@@ -640,7 +648,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

@@ -24,6 +24,10 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>StretchGoGo reads your existing mindful session data to show your progress.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>StretchGoGo writes your completed stretch sessions as mindful sessions so you can track them in Apple Health.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
