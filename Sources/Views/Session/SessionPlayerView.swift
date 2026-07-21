@@ -326,6 +326,10 @@ struct SessionPlayerView: View {
     private func completeSession() {
         timer?.invalidate()
         dataManager.completeSession(session)
+        // v3.1.0: log completed stretch session to Apple Health (MindfulSession type)
+        Task { @MainActor in
+            await HealthKitManager.shared.logMindfulSession(duration: TimeInterval(session.duration))
+        }
         showingCompletion = true
     }
 }
