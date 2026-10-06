@@ -33,4 +33,4 @@ $9.99 (USD) - One-time purchase, no subscriptions
 4+
 
 ## Support URL
-https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html
+https://lauer3912.github.io/ios-StretchFlow/PrivacyPolicy.html

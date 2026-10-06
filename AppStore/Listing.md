@@ -63,6 +63,9 @@ Switch between dark and light themes. Enjoy a premium, Apple Design Award-worthy
 - Advanced statistics
 
 Subscribe to unlock every feature. Cancel anytime. 7-day free trial, then $4.99/month (or $49.99/year). Auto-renews until cancelled.
+
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://lauer3912.github.io/ios-StretchFlow/PrivacyPolicy.html
 ```
 
 > 字符数: ~900（限制 4000）
@@ -155,7 +158,8 @@ stretch, flexibility, daily stretch, back pain, posture, office stretch, stretch
 | 崩溃日志 | 否 | 未集成崩溃统计 SDK |
 | 性能数据 | 否 | 未集成分析 SDK |
 | 广告 | 否 | 不使用广告 |
-| **隐私政策网址** | https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html | |
+| **隐私政策网址** | https://lauer3912.github.io/ios-StretchFlow/PrivacyPolicy.html | 已验证 HTTP 200 |
+| **使用条款 (EULA)** | https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ | 必须同时放入 App Description |
 
 ---
 
@@ -257,7 +261,8 @@ App 不含任何医疗设备功能。StretchGoGo 是一款健身/生活方式（
 | Bundle ID 在 Xcode 中与 App Store Connect 一致 | ✅ | com.ggsheng.StretchGoGo |
 | 订阅产品状态为"准备提交" | ⬜ | 需在 App Store Connect 确认 |
 | App 隐私配置（购买行为=是）| ⬜ | 需在 App Store Connect 配置 |
-| 隐私政策 URL 可访问 | ✅ | https://lauer3912.github.io/ios-StretchFlow/docs/PrivacyPolicy.html |
+| App Description 含可点击 EULA URL | ✅ | https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ |
+| 隐私政策 URL 可访问 | ✅ | https://lauer3912.github.io/ios-StretchFlow/PrivacyPolicy.html |
 | 截图尺寸正确（1290×2796 / 1179×2556）| ⬜ | 需准备真机截图 |
 | 订阅审核截图已上传 | ⬜ | 显示订阅墙界面 |
 | 版本号与 project.yml 一致 | ✅ | 1.0.0 |

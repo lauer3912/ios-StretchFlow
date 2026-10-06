@@ -504,6 +504,7 @@ Agent 必须生成并填写以下内容到 `AppStore/Listing.md`：
 |-----------------------------|---------|---------|
 | **2.1.0 App Completeness** | 功能不完整、崩溃、占位符 | 完善功能 → 重新测试 → 重新 Archive |
 | **3.1.1 In-App Purchase** | IAP 配置错误、未显示、沙盒问题 | 检查 IAP ID、价格、审核截图 |
+| **3.1.2 Subscriptions** | 自动续订的 App Description 缺少功能性 EULA URL | 在每个本地化描述中加入 Apple 标准 EULA；验证 URL 200；纯元数据修复无需新 Build |
 | **4.1.0 Design: Spam** | App 与现有 App 过于相似 | 增加独特功能、差异化 UI |
 | **4.2.0 Design: Minimum Functionality** | App 功能太少、无实际用途 | 增加功能至 ≥60 个 |
 | **5.1.1 Data Collection** | 隐私政策缺失或不合规 | 更新隐私政策、添加隐私标签 |
@@ -519,13 +520,13 @@ Agent 必须生成并填写以下内容到 `AppStore/Listing.md`：
     ↓
 2. 识别问题类型（Completeness / Metadata / Design / IAP / Privacy）
     ↓
-3. Agent 修复代码/配置
+3. Agent 修复代码/配置/元数据
     ↓
-4. 重新执行 Unit Tests + UITests
+4. 判断是否需要新 Build（纯元数据问题不要重新 Archive）
     ↓
-5. 确认截图、Listing.md 是否需要更新
+5. 代码问题执行 Unit Tests + UITests；元数据问题验证字段已保存
     ↓
-6. Human 重新 Archive + Upload
+6. 仅代码、Info.plist、Entitlements 等二进制变更才重新 Archive + Upload
     ↓
 7. 在 App Store Connect 回复审核员（说明已修复）
     ↓
@@ -4886,6 +4887,7 @@ catch {
 | **隐私政策缺失** | 未提供隐私政策 URL 或内容不完整 | Agent 生成 PrivacyPolicy.html → 部署到 GitHub Pages → 更新 URL |
 | **权限描述缺失/不当** | Info.plist 权限描述为空或不清晰 | 补充英文权限描述 → 重新 Archive → 重新提交 |
 | **内购未正确实现** | 假购买流程、Product ID 不匹配 | 实现真实 StoreKit 2 流程 → 检查 Product ID → 重新提交 |
+| **订阅缺少 EULA** | App 内已有条款链接，但 App Description 没有功能性 EULA URL | 描述末尾加入 Apple 标准 EULA → 验证 HTTP 200 → 使用原 Build 重新提交 |
 | **未提供测试账号** | 需要登录的 App 未提供测试账号 | 在审核信息中提供测试账号和 Demo 数据 |
 
 ---
@@ -5330,4 +5332,3 @@ v12 (2026-07-01 14:50 CST):
   - HR-89 Bundle ID Prefix 选名建议 (现有前缀 + 候选)
 - 实用: HR-82 反例触发 — Stellumbra scaffold Info.plist 硬编码 `CFBundleShortVersionString="3.0.0"` 而非变量, 修正走 git commit
 - 实用: HR-83 "Go" 后缀约定 — Stellumbra DisplayName="Stellumbra" 不符合 3/4 项目既有惯例 (品牌特殊可豁免, 但应在 ProjectProposal 中声明)
-
