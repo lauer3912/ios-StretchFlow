@@ -7,6 +7,7 @@ struct ProfileView: View {
     private var isPad: Bool { horizontalSizeClass == .regular }
     @EnvironmentObject var premiumManager: PremiumManager
     @State private var showPaywall = false
+    @State private var showCredits = false
 
     // Per 07-02 14:13 佛老爷 拍板 (新增 launch arg 供 sim 截图自动化)
     // 07-01 7-01 实战 ReverseWorldGo saved 模式: `-autoPaywall` auto-show paywall
@@ -37,6 +38,9 @@ struct ProfileView: View {
             .sheet(isPresented: $showPaywall) {
                 PremiumPaywallView()
             }
+            .sheet(isPresented: $showCredits) {
+                StretchCreditsView()
+            }
             .onAppear {
                 if autoPaywall { showPaywall = true }
             }
@@ -65,6 +69,9 @@ struct ProfileView: View {
                 .sheet(isPresented: $showPaywall) {
                     PremiumPaywallView()
                 }
+                .sheet(isPresented: $showCredits) {
+                    StretchCreditsView()
+                }
                 .onAppear {
                     if autoPaywall { showPaywall = true }
                 }
@@ -73,71 +80,104 @@ struct ProfileView: View {
     }
 
     private var premiumSection: some View {
-        Group {
-            if premiumManager.isPremiumActive {
-                HStack(spacing: 12) {
-                    Image(systemName: "crown.fill")
-                        .font(.title2)
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [Color(hex: "FFD700"), Color(hex: "FFA500")],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Premium Active")
-                            .font(.headline)
-                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
-
-                        Text("All features unlocked")
-                            .font(.caption)
-                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
-                    }
-
-                    Spacer()
-
-                    Image(systemName: "checkmark.seal.fill")
-                        .font(.title2)
-                        .foregroundColor(Color(hex: "5B4CD4"))
-                }
-                .padding(16)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(themeManager.isDarkMode ? AppColors.darkSurface : AppColors.lightSurface)
-                )
-            } else {
-                Button {
-                    showPaywall = true
-                } label: {
+        VStack(spacing: 12) {
+            Group {
+                if premiumManager.isPremiumActive {
                     HStack(spacing: 12) {
-                        Image(systemName: "crown")
+                        Image(systemName: "crown.fill")
                             .font(.title2)
-                            .foregroundColor(Color(hex: "FFD700"))
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [Color(hex: "FFD700"), Color(hex: "FFA500")],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
 
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Upgrade to Premium")
+                            Text("Premium Active")
                                 .font(.headline)
                                 .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
 
-                            Text("$0.99/month - Unlock all features")
+                            Text("All features unlocked")
                                 .font(.caption)
                                 .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
                         }
 
                         Spacer()
 
-                        Image(systemName: "chevron.right")
-                            .font(.caption)
-                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+                        Image(systemName: "checkmark.seal.fill")
+                            .font(.title2)
+                            .foregroundColor(Color(hex: "5B4CD4"))
                     }
                     .padding(16)
                     .background(
                         RoundedRectangle(cornerRadius: 16)
                             .fill(themeManager.isDarkMode ? AppColors.darkSurface : AppColors.lightSurface)
                     )
+                } else {
+                    Button {
+                        showPaywall = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "crown")
+                                .font(.title2)
+                            .foregroundColor(Color(hex: "FFD700"))
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Upgrade to Premium")
+                                    .font(.headline)
+                                    .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
+
+                                Text("$0.99/month - Unlock all features")
+                                    .font(.caption)
+                                    .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+                            }
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+                        }
+                        .padding(16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(themeManager.isDarkMode ? AppColors.darkSurface : AppColors.lightSurface)
+                        )
+                    }
                 }
+            }
+
+            Button {
+                showCredits = true
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "bolt.heart.fill")
+                        .font(.title2)
+                        .foregroundColor(.orange)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Energy Credits & Daily Streak")
+                            .font(.headline)
+                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary)
+
+                        Text("100 initial bonus credits + daily check-in")
+                            .font(.caption)
+                            .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+                    }
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundColor(themeManager.isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary)
+                }
+                .padding(16)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(themeManager.isDarkMode ? AppColors.darkSurface : AppColors.lightSurface)
+                )
             }
         }
     }
